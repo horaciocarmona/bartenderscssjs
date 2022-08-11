@@ -1,0 +1,68 @@
+section {
+    .tituloCoctel {
+        grid-area: tituloCoctel;
+
+        .separador {
+            background-color: $colorTextoBebidas;
+            height: 5px;
+        }
+    }
+
+    .imagenCoctelGinTonic {
+        @include coctelesImg(imagenCoctelGinTonic, url("../img/GinTonic.jpg"));
+
+        p {
+            @extend %coctelesP;
+        }
+    }
+
+    .imagenCoctelKirRoyal {
+        @include coctelesImg(imagenCoctelKirRoyal, url("../img/KirRoyal.jpg"));
+
+        p {
+            @extend %coctelesP;
+        }
+    }
+
+    .arriba {
+        width: 97vw;
+        margin: 5px;
+        height: 7vh;
+        display: flex;
+        justify-content: flex-end;
+        grid-area: arriba;
+        i {
+            width: 50px;
+            margin: 0px 5px 10px 5px;
+            padding: 10px 5px 3px 15px;
+            background-color: $colorNav;
+            &:hover {
+                background-color: rgb(241, 241, 127);
+           }
+        }
+    }
+
+    .imagenCoctelFitzgerald {
+        @include coctelesImg(imagenCoctelFitzgerald, url("../img/Fitzgerald.jpg"));
+
+        p {
+            @extend %coctelesP;
+        }
+
+    }
+}
+
+.gridCoctel {
+    display: grid;
+    align-items: center;
+    max-height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "tituloCoctel"
+        "imagenCoctelGinTonic"
+        "imagenCoctelKirRoyal"
+        "imagenCoctelFitzgerald"
+        "arriba"
+        "footerflex";
+}

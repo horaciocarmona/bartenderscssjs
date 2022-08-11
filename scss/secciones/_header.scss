@@ -1,0 +1,16 @@
+header nav .container-fluid {
+    background-color: $colorNav;
+
+    a {
+        color: bisque;
+    }
+}
+
+header h1 span {
+    margin: 5px;
+    padding-bottom: 5px;
+    padding-left: 1px;
+    animation-name: girando;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}

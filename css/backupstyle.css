@@ -1,0 +1,1197 @@
+/* resetea todos los parametros */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.body {
+    background-color: rgb(163, 163, 204);
+}
+
+form div a img {
+    /* object-fit: cover; */
+    background-size: cover;
+    width: 10vw;
+    height: 10vh;
+    margin-bottom: 20px;
+}
+
+
+.separador {
+    background-color: rgb(247, 236, 16);
+    height: 5px;
+}
+
+.row div img {
+    background-size: cover;
+}
+
+
+.imagenhover:hover {
+    background-color: rgb(55, 55, 56);
+}
+
+.imagenhoveraccesorios:hover {
+    transition: .2s;
+    filter: blur(2px);
+}
+
+.negrita {
+    color: black;
+    font-size: 25px;
+}
+
+.block {
+    color: rgb(251, 171, 171);
+    border: 3px black;
+    margin: 50px;
+    padding: 20px;
+}
+
+.inline {
+    background-color: blueviolet;
+    border: solid 3px black;
+    margin: 20px;
+    padding: 10px;
+}
+
+.pruebaEnBloque {
+    display: inline;
+}
+
+.pruebaEnLinea {
+    display: block;
+}
+
+.inline-block {
+    background-color: chartreuse;
+    color: black;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.relative {
+    position: relative;
+    width: 600;
+    left: 2px;
+    right: 20;
+}
+
+.absolute {
+    position: absolute;
+    left: 100px;
+}
+
+.footerflex {
+    grid-area: footerflex;
+    flex-wrap: wrap;
+    display: flex;
+    color: blue;
+    background-color: rgb(146, 146, 163);
+    flex-direction: row;
+    justify-items: center;
+    justify-content: flex-start;
+}
+
+.footerflex div img {
+    max-width: 50px;
+    max-height: 50px;
+    margin: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    background-color: brown;
+}
+
+.footerflex div p {
+    margin: 10px;
+    max-width: 20vw;
+    font-size: small;
+    display: inline;
+}
+
+.footerflex ul {
+    max-width: 50vw;
+    margin: 10px;
+    margin-left: 40px;
+    padding-top: 15px;
+}
+
+.footerflex ul li{
+    list-style:none;
+}
+
+
+.imagenBebidas {
+    grid-area: imagenBebidas;
+    margin: 20px;
+    width: 50vw;
+}
+
+.imagenBebidas p {
+    background-color: brown;
+    color: rgb(240, 240, 93);
+    padding-left: 1rem;
+
+}
+
+.imagenBebidas img {
+     width: 50vw;  
+     object-fit: fill;
+    max-height: 40vh;
+}
+
+.gridIndexButton {
+    max-width: 20vw;
+    max-height: 10vw;
+    padding: 10px;
+    margin: 1rem;
+    font-size: small;
+    background-color: darkgray;
+    transform: skew(-10deg);
+    transition: 3s;
+}
+
+.gridIndexButton:hover {
+    background-color: rgb(241, 241, 127);
+    transform: scale(1.2);
+    transition: 1s;
+}
+
+.tituloPrincipal {
+    grid-area: tituloPrincipal;
+    background-color: rgb(171, 166, 166);
+    animation-name: tituloAnimacion;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    max-width: 100vw;
+}
+
+.tituloPrincipal:hover {
+    transition: 2s;
+    background-color: rgb(243, 126, 126);
+}
+
+.tituloPrincipal h1 {
+    margin-top: 10px;
+    margin-left: 20vw;
+    font-size: 30px;
+    max-width: 60vw;
+}
+
+.tituloPrincipal h2 {
+    margin-left: 10vw;
+    font-size: 20px;
+    margin-bottom: 20px;
+    max-width: 80vw;
+}
+
+.textoBebidas {
+    grid-area: textoBebidas;
+    max-width: 40vw;
+    margin: 10px;
+    align-self: normal;
+}
+
+.textoBebidas p {
+    margin-top: 2vw;
+    color: rgb(236, 236, 119);
+    font-size: x-large;
+    font-family: 'Dancing Script', cursive;
+
+}
+
+
+.imagenAccesorios img {
+    width: 50vw;  
+    object-fit: fill;
+}
+
+.imagenAccesorios {
+    grid-area: imagenAccesorios;
+    margin: 20px;
+    width: 50vw;
+
+}
+
+.imagenAccesorios p {
+    background-color: brown;
+    color: rgb(240, 240, 93);
+    padding-left: 1rem;
+
+}
+
+.textoAccesorios {
+    grid-area: textoAccesorios;
+    max-width: 40vw;
+    margin: 10px;
+    align-self: normal;
+}
+
+.textoAccesorios p {
+    margin-top: 30px;
+    color: rgb(236, 236, 119);
+    font-size: x-large;
+    font-family: 'Dancing Script', cursive;
+}
+
+.imagenAccesoriosProducto {
+    background-color: red;
+}
+
+.imagenAccesoriosProducto img {
+    max-width: 250px;
+    max-height: 150px;
+}
+
+.textoAccesoriosProducto {
+    display: inline-block;
+    max-width: 80px;
+    margin: 10px;
+}
+
+.menuflex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: right;
+    margin: 10px;
+    width: 1fr;
+}
+
+.menuflex li {
+    list-style: none;
+    background-color: rgb(154, 154, 247);
+    padding: 10px;
+    border: black double 3px;
+}
+
+.menuflex li a {
+    text-decoration: double;
+    text-transform: lowercase;
+    color: white;
+    width: 20vw;
+
+}
+
+.menuflex a:hover {
+    color: red;
+}
+
+.table {
+    max-width: 100px;
+    margin: 10px;
+    font-size: 15px;
+}
+
+.imagenCoctelGinTonic {
+    grid-area: imagenCoctelGinTonic;
+    background-image: url("../img/GinTonic.jpg");
+    background-size: cover;
+    height: 220vh;
+    margin: 10px;
+
+}
+
+
+.imagenCoctelGinTonic p {
+    max-width: 50vw;
+    color: rgb(113, 113, 243);
+    font-style: italic;
+    font-size: x-large;
+    margin: 10vw;
+    background-color: rgba(50, 14, 31, 0.5);
+    padding: 10px;
+
+}
+
+.imagenCoctelGinTonic p:hover {
+    animation: girando;
+    animation-duration: 3s;
+    animation-iteration-count: initial;
+}
+
+.imagenCoctelKirRoyal {
+    grid-area: imagenCoctelKirRoyal;
+    background-image: url("../img/KirRoyal.jpg");
+    background-size: cover;
+    height: 220vh;
+    margin: 10px;
+
+}
+
+.imagenCoctelKirRoyal p {
+    width: 50vw;
+    color: rgb(113, 113, 243);
+    font-style: italic;
+    font-size: x-large;
+    margin: 10vw;
+    background-color: rgba(50, 14, 31, 0.5);
+
+    padding: 10px;
+}
+
+.imagenCoctelKirRoyal p:hover {
+    animation: girando;
+    animation-duration: 3s;
+    animation-iteration-count: initial;
+}
+
+.imagenCoctelFitzgerald {
+    grid-area: imagenCoctelFitzgerald;
+    background-image: url("../img/Fitzgerald.jpg");
+    background-size: cover;
+    height: 220vh;
+    margin: 10px;
+
+}
+
+.imagenCoctelFitzgerald p {
+    width: 50vw;
+    color: rgb(113, 113, 243);
+    font-style: italic;
+    font-size: x-large;
+    margin: 10vw;
+    background-color: rgba(50, 14, 31, 0.5);
+    padding: 10px;
+
+}
+
+.imagenCoctelFitzgerald p:hover {
+    animation: girando;
+    animation-duration: 3s;
+    animation-iteration-count: initial;
+}
+
+
+.imagenBebida {
+    margin-top: 10px;
+    width: 100px;
+    display: inline-block;
+
+}
+
+.imagenBebida img {
+    width: 5vw;
+    height: 40vh;
+}
+
+.textoBebida {
+    display: inline-block;
+    max-width: 80px;
+    margin: 20px;
+}
+
+
+.sectionFlex {
+    display: flex;
+    width: 900px;
+}
+
+.sectionFlexAccesorioProducto {
+    display: flex;
+    width: 950px;
+    margin: 10px;
+}
+
+.main form p {
+    color: blue;
+}
+
+.headerflex {
+    grid-area: headerflex;
+    display: flex;
+    justify-content: space-between;
+    color: blue;
+    background-image: linear-gradient(to right, rgb(233, 181, 181), blue);
+    align-items: center;
+}
+
+.h1flex {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.h1flex img {
+    max-width: 50px;
+    max-height: 50px;
+    margin: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    background-color: brown;
+}
+
+.h1flex a img {
+    max-width: 50px;
+    max-height: 50px;
+    margin: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    background-color: brown;
+}
+
+.gridIndex {
+    display: grid;
+    background-color: rgb(163, 163, 204);
+    align-items: stretch;
+    grid-template-columns: 0.1fr 1.9fr;
+    grid-template-rows: 0.1fr 0.5 0.5fr 0.1fr;
+    grid-template-areas:
+        "tituloPrincipal tituloPrincipal "
+        "imagenBebidas textoBebidas"
+        "imagenAccesorios textoAccesorios"
+        "footerflex footerflex";
+}
+
+.gridCoctel {
+    display: grid;
+    background-color: rgb(163, 163, 204);
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 0.1fr;
+    grid-template-areas:
+        "imagenCoctelGinTonic"
+        "imagenCoctelKirRoyal"
+        "imagenCoctelFitzgerald"
+        "footerflex";
+}
+
+
+.gridBebidasVenta {
+    display: grid;
+    background-color: rgb(163, 163, 204);
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.1fr 1fr 1fr 0.1fr;
+    grid-template-areas:
+        "headerflex headerflex headerflex headerflex"
+        "imagenCampari imagenPuertoIndias imagenBramble imagenCapel "
+        "imagenNegroni imagenHeraclito imagenJackDaniels imagenRonAvana "
+        "footerflex footerflex footerflex footerflex";
+
+}
+
+.imagenCampari {
+    grid-area: imagenCampari;
+    width: 5vw;
+}
+
+.textoCampari {
+    max-width: 80px;
+    margin: 20px;
+}
+
+.imagenPuertoIndias {
+    grid-area: imagenPuertoIndias;
+    width: 5vw;
+}
+
+.textoPuertoIndias {
+    max-width: 80px;
+    margin: 20px;
+}
+
+.imagenBramble {
+    grid-area: imagenBramble;
+    width: 5vw;
+}
+
+.textoBramble {
+    max-width: 80px;
+    margin: 20px;
+
+}
+
+.imagenCapel {
+    grid-area: imagenCapel;
+    width: 5vw;
+}
+
+.textoCapel {
+    max-width: 80px;
+    margin: 20px;
+}
+
+.imagenNegroni {
+    grid-area: imagenNegroni;
+    width: 10px;
+}
+
+.imagenNegroni img {
+    width: 15vw;
+    height: 40vh;
+}
+
+.textoNegroni {
+    max-width: 80px;
+    margin: 20px;
+}
+
+.imagenHeraclito {
+    grid-area: imagenHeraclito;
+    width: 5vw;
+}
+
+.textoHeraclito {
+    max-width: 80px;
+    margin: 20px;
+}
+
+.imagenRonAvana {
+    grid-area: imagenRonAvana;
+    width: 5vw;
+}
+
+.imagenRonAvana img {
+    width: 15vw;
+    height: 40vh;
+}
+
+.textoRonAvana {
+    max-width: 80px;
+    margin: 20px;
+}
+
+.imagenJackDaniels {
+    grid-area: imagenJackDaniels;
+    width: 5vw;
+}
+
+.imagenJackDaniels img {
+    width: 15vw;
+    height: 40vh;
+
+}
+
+.textoJackDaniels {
+    max-width: 80px;
+    margin: 20px;
+}
+
+.gridAccesoriosVenta {
+    display: grid;
+    background-color: rgb(163, 163, 204);
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.1fr 1fr 1fr 0.1fr;
+    grid-template-areas:
+        "tituloAccesorio tituloAccesorio tituloAccesorio tituloAccesorio tituloAccesorio tituloAccesorio "
+        "imagenCopasCristal textoCopasCristal imagenCoctelera textoCoctelera imagenSetBoston textoSetBoston "
+        "imagenBarraCoctelera textoBarraCoctelera imagenPortadorCoctel textoPortadorCoctel imagenSetDeluxe textoSetDeluxe "
+        "footerflex footerflex footerflex footerflex footerflex footerflex ";
+
+}
+
+.tituloAccesorio {
+    grid-area: tituloAccesorio;
+}
+
+.imagenCopasCristal {
+    grid-area: imagenCopasCristal;
+    /* width: 5vw; */
+}
+
+.imagenCopasCristal img {
+    width: 20vw;
+    height: 40vh;
+    margin-left: 5px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    object-fit: cover;
+}
+
+.textoCopasCristal {
+    grid-area: textoCopasCristal;
+    max-width: 80px;
+    margin: 20px;
+}
+
+.imagenCoctelera {
+    grid-area: imagenCoctelera;
+    /* width: 5vw; */
+}
+
+.imagenCoctelera img {
+    width: 20vw;
+    height: 40vh;
+    margin-left: 5px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    object-fit: cover;
+
+}
+
+.textoCoctelera {
+    grid-area: textoCoctelera;
+    max-width: 80px;
+    margin: 20px;
+}
+
+.imagenSetBoston {
+    grid-area: imagenSetBoston;
+    /* width: 5vw; */
+}
+
+.imagenSetBoston img {
+    width: 20vw;
+    height: 40vh;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    object-fit:cover;
+}
+
+.textoSetBoston {
+    grid-area: textoSetBoston;
+    max-width: 80px;
+    margin: 20px;
+}
+
+.imagenBarraCoctelera {
+    grid-area: imagenBarraCoctelera;
+    /* width: 5vw; */
+}
+
+.imagenBarraCoctelera img {
+    width: 20vw;
+    height: 40vh;
+    margin-left: 5px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    object-fit: cover;
+
+}
+
+.textoBarraCoctelera {
+    grid-area: textoBarraCoctelera;
+    max-width: 80px;
+    margin: 20px;
+}
+
+.imagenPortadorCoctel {
+    grid-area: imagenPortadorCoctel;
+    /* width: 5vw; */
+}
+
+.imagenPortadorCoctel img {
+    width: 20vw;
+    height: 40vh;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    object-fit: cover;
+}
+
+.textoPortadorCoctel {
+    grid-area: textoPortadorCoctel;
+    max-width: 80px;
+    margin: 20px;
+}
+
+.imagenSetDeluxe {
+    grid-area: imagenSetDeluxe;
+    /* width: 5vw; */
+}
+
+.imagenSetDeluxe img {
+    width: 20vw;
+    height: 40vh;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    object-fit: cover;
+}
+
+.textoSetDeluxe {
+    grid-area: textoSetDeluxe;
+    max-width: 80px;
+    margin: 20px;
+}
+
+.gridContacto {
+    display: grid;
+    background-color: rgb(163, 163, 204);
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 1fr 0.1fr;
+    grid-template-areas:
+        "headerflex"
+        "formulario"
+        "footerflex";
+}
+
+
+
+.formulario input {
+    color: rgb(32, 32, 16);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.formulario input[type=submit]:hover {
+    background-color: rgb(238, 153, 153);
+}
+
+.formulario input[type=submit] {
+    margin-top: 20px;
+}
+
+.formulario input[type=reset]:hover {
+    background-color: rgb(243, 165, 165);
+}
+
+.formulario input[type=email]:hover {
+    background-color: rgb(243, 165, 165);
+}
+
+.formulario input[type=text]:hover {
+    background-color: rgb(243, 165, 165);
+}
+
+.formulario input[type=checkbox]:hover {
+    background-color: rgb(243, 165, 165);
+}
+
+#botonEnvio:hover {
+    background-color: brown;
+}
+
+.formulario input[type=radio]:hover {
+    background-color: rgb(243, 165, 165);
+}
+
+.formulario select:hover {
+    background-color: rgb(243, 165, 165);
+}
+
+#exampleFormControlTextarea1:hover {
+    background-color: rgb(243, 165, 165);
+}
+
+.formulario input[type=text]:focus {
+    width: 400px;
+    background-color: yellow;
+}
+
+.formulario input[type=email]:focus {
+    width: 400px;
+    background-color: yellow;
+}
+
+
+.formulario label p {
+    margin: 10px;
+}
+
+.formulario textarea {
+    max-width: 60vw;
+}
+
+.formulario label span {
+    margin: 10px;
+}
+
+
+.formulario p {
+    margin: 10px;
+}
+
+
+@media(max-width:460px) {
+    form div a img {
+        width: 30vw;
+    }
+    
+    .gridIndex {
+        background-color: brown;
+    }
+
+    .imagenBebidas img {
+        width: 50vw;
+        height: 50vw;
+    }
+
+    .imagenAccesorios img {
+        width: 50vw;
+        height: 50vw;
+    }
+
+    .textoBebidas p {
+        margin-top: 5vh;
+        font-size: 10px;
+        font-family: sans-serif;
+    }
+
+    .textoAccesorios p {
+        margin-top: 7vh;
+        font-size: 10px;
+        font-family: sans-serif;
+    }
+
+    .footerflex {
+        background-color: rgb(146, 146, 163);
+        flex-direction: column;
+    }
+
+    .footerflex ul{
+        max-width: 35vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footerflex div p {
+        max-width: 100%;
+        margin-top: 0%;
+        margin-bottom: 0%;
+        display: inline;
+    }
+
+    .tituloPrincipal h1 {
+        margin-top: 30px;
+        margin-left: 15px;
+    }
+
+    .tituloPrincipal h2 {
+        margin-left: 5px;
+        font-size: 10px;
+        margin-bottom: 20px;
+        width: 100vw;
+    }
+
+    .gridIndexButton {
+        padding-top: 0%;
+        background-color: darkgray;
+        transform: skew(-10deg);
+        transition: 3s;
+        font-size: 9px;
+    }
+
+    .imagenCoctelGinTonic {
+        grid-area: imagenCoctelGinTonic;
+        background-image: url("../img/GinTonic.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 70vh;
+        margin: 5px;
+
+    }
+
+
+    .imagenCoctelKirRoyal {
+        grid-area: imagenCoctelKirRoyal;
+        background-image: url("../img/KirRoyal.jpg");
+        background-size: cover;
+        margin: 5px;
+        background-repeat: no-repeat;
+        height: 70vh;
+
+    }
+
+    .imagenCoctelFitzgerald {
+        grid-area: imagenCoctelFitzgerald;
+        background-image: url("../img/Fitzgerald.jpg");
+        background-size: cover;
+        margin: 5px;
+        background-repeat: no-repeat;
+        height: 70vh;
+
+    }
+
+    .imagenCoctelFitzgerald p {
+        width: 78vw;
+        color: rgb(113, 113, 243);
+        font-style: italic;
+        font-size: large;
+        background-color: rgba(50, 14, 31, 0.7);
+
+        margin: 10px;
+        padding: 2px;
+    }
+
+    .imagenCoctelKirRoyal p {
+        width: 78vw;
+        color: rgb(113, 113, 243);
+        font-style: italic;
+        font-size: large;
+        margin: 10px;
+        background-color: rgba(50, 14, 31, 0.7);
+
+        padding: 2px;
+    }
+
+    .imagenCoctelGinTonic p {
+        max-width: 78vw;
+        color: rgb(113, 113, 243);
+        font-style: italic;
+        font-size: large;
+        margin: 10px;
+        background-color: rgba(50, 14, 31, 0.7);
+        padding: 2px;
+    }
+
+
+    .gridBebidasVenta {
+        display: grid;
+        background-color: rgb(243, 106, 106);
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.1fr 1fr 1fr 1fr 1fr 0.1fr;
+        grid-template-areas:
+            "headerflex headerflex "
+            "imagenCampari imagenPuertoIndias"
+            "imagenBramble imagenCapel "
+            "imagenNegroni imagenHeraclito"
+            "imagenJackDaniels imagenRonAvana "
+            "footerflex footerflex ";
+
+    }
+
+    .imagenPuertoIndias img {
+        width: 25vw;
+    }
+
+    .imagenJackDaniels img {
+        width: 40vw;
+    }
+
+    .imagenRonAvana img {
+        width: 40vw;
+    }
+
+    .imagenNegroni img {
+        width: 40vw;
+    }
+
+    .imagenBramble img {
+        width: 25vw;
+    }
+
+    .imagenCampari img {
+        width: 25vw;
+    }
+
+    .imagenCapel img {
+        width: 25vw;
+    }
+
+    .imagenHeraclito img {
+        width: 25vw;
+    }
+
+    .gridAccesoriosVenta {
+        display: grid;
+        background-color: rgb(243, 106, 106);
+        align-items: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.1fr 0.5fr 0.1fr 0.5fr 0.1fr 0.5fr 0.1fr 0.5fr 0.1fr 0.5fr 0.1fr 0.5fr 0.1fr 0.1fr;
+        grid-template-areas:
+            "tituloAccesorio"
+            "imagenCopasCristal"
+            "textoCopasCristal"
+            "imagenCoctelera"
+            "textoCoctelera"
+            "imagenSetBoston"
+            "textoSetBoston "
+            "imagenBarraCoctelera"
+            "textoBarraCoctelera"
+            "imagenPortadorCoctel"
+            "textoPortadorCoctel"
+            "imagenSetDeluxe"
+            "textoSetDeluxe "
+            "footerflex ";
+
+    }
+
+    .imagenSetBoston img {
+        width: 100vw;
+        height: 60vh;
+        margin-bottom: 0%;
+        margin-top: 0%;
+
+    }
+
+    .imagenCoctelera img {
+        width: 100vw;
+        height: 60vh;
+        margin-bottom: 0%;
+        margin-top: 0%;
+    }
+
+    .imagenCopasCristal img {
+        width: 100vw;
+        height: 60vh;
+        margin-bottom: 0px;
+
+    }
+
+    .imagenBarraCoctelera img {
+        width: 100vw;
+        height: 60vh;
+        margin-bottom: 0%;
+        margin-top: 0%;
+
+    }
+
+    .imagenPortadorCoctel img {
+        width: 100vw;
+        height: 60vh;
+        margin-bottom: 0%;
+        margin-top: 0%;
+    }
+
+    .imagenSetDeluxe img {
+        width: 100vw;
+        height: 60vh;
+        margin-bottom: 0%;
+        margin-top: 0%;
+    }
+
+    .gridContacto {
+        background-color: rgb(243, 106, 106);
+    }
+
+
+    header h1 span {
+        margin: 5px;
+        padding-bottom: 5px;
+        padding-left: 1px;
+        animation-name: girando;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+    }
+
+    .negrita {
+        color: black;
+        font-size: 15px;
+    }
+
+}
+
+/* fin de media query*/
+.navbar {
+    padding-bottom: 2px;
+}
+
+.footerflex ol i {
+    color: white;
+}
+
+
+.container-fluid {
+    background-color: rgb(146, 146, 163);
+}
+
+.container-fluid a {
+    color: bisque;
+}
+
+
+@keyframes tituloAnimacion {
+    0% {
+        background-image: linear-gradient(0deg, rgba(178, 180, 180, 1) 0%, rgba(246, 216, 152, 1) 100%);
+    }
+
+    25% {
+        background-image: linear-gradient(0deg, rgba(178, 180, 180, 1) 0%, rgba(246, 216, 152, 1) 100%);
+        opacity: 0.5;
+    }
+
+    50% {
+        background-image: linear-gradient(0deg, rgba(178, 180, 180, 1) 0%, rgba(246, 216, 152, 1) 100%);
+        opacity: 0.7;
+    }
+
+    75% {
+        background-image: linear-gradient(0deg, rgba(178, 180, 180, 1) 0%, rgba(246, 216, 152, 1) 100%);
+        opacity: 0.8;
+    }
+
+    100% {
+        background-image: linear-gradient(0deg, rgba(178, 180, 180, 1) 0%, rgba(246, 216, 152, 1) 100%);
+        opacity: 0.9;
+    }
+
+}
+
+@keyframes girando {
+    0% {
+        transform: rotatex(0deg)
+    }
+
+    5% {
+        transform: rotatex(20deg)
+    }
+
+    10% {
+        transform: rotatex(40deg)
+    }
+
+    15% {
+        transform: rotatex(60deg)
+    }
+
+    20% {
+        transform: rotatex(80deg)
+    }
+
+    25% {
+        transform: rotatex(100deg)
+    }
+
+    30% {
+        transform: rotatex(120deg)
+    }
+
+    35% {
+        transform: rotatex(140deg)
+    }
+
+    40% {
+        transform: rotatex(160deg)
+    }
+
+    45% {
+        transform: rotatex(180deg)
+    }
+
+    50% {
+        transform: rotatex(200deg)
+    }
+
+    60% {
+        transform: rotatex(220deg)
+    }
+
+    65% {
+        transform: rotatex(240deg)
+    }
+
+    70% {
+        transform: rotatex(260deg)
+    }
+
+    75% {
+        transform: rotatex(280deg)
+    }
+
+    80% {
+        transform: rotatex(300deg)
+    }
+
+    85% {
+        transform: rotatex(320deg)
+    }
+
+    90% {
+        transform: rotatex(340deg)
+    }
+
+    95% {
+        transform: rotatex(360deg)
+    }
+
+    100% {
+        transform: rotatex(380deg)
+    }
+
+}

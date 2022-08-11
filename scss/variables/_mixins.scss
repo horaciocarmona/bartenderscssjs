@@ -1,0 +1,30 @@
+@mixin hIndex($margin_top, $margin_left, $margin_bottom, $font_size, $max_width) {
+    margin-top: $margin_top;
+    margin-left: $margin_left;
+    margin-bottom: $margin_bottom;
+    font-size: $font_size;
+    max-width: $max_width;
+    text-align: center;
+}
+
+@mixin accesoriosTexto ($grid_area) {
+    grid-area: $grid_area;
+    max-width: 80px;
+    margin: 20px;
+}
+
+@mixin imagenBebidasAccesorios($grid_area) {
+    grid-area: $grid_area;
+    margin: 20px;
+    width: 50vw;
+
+}
+
+@mixin coctelesImg($grid_area, $background_image) {
+    grid-area: $grid_area;
+    background-image: $background_image;
+    background-size: cover;
+    height: 220vh;
+    margin: 10px;
+
+}

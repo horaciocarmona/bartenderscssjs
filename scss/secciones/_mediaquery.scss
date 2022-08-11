@@ -1,0 +1,406 @@
+@media(max-width:460px) {
+    .formulario form div a img {
+        width: 30vw;
+    }
+
+    .formulario form {
+        input {
+            &:focus:not(#flexCheckDefault):not(#exampleRadios1):not(#exampleRadios3):not(#exampleRadios2) {
+                width: 200px;
+            }
+
+        }
+    }
+
+
+    main .imagenBebidas img {
+        width: 50vw;
+        height: 50vw;
+    }
+
+    main .imagenAccesorios img {
+        width: 50vw;
+        height: 50vw;
+    }
+
+    main .imagenAccesorios .arriba {
+        display: none;
+    }
+
+    footer .gridCorreo {
+        grid-template-columns: 1fr 0.7fr;
+        grid-template-rows: 0.5fr 0.01fr 0.01fr;
+        justify-items: center;
+    }
+
+    main .textoBebidas {
+        margin-top: 20px;
+    }
+
+    main .textoBebidas h3 {
+        font-size: 15px;
+        font-family: $fontSansSerif;
+    }
+
+    main .textoBebidas p {
+        font-size: 10px;
+        font-family: $fontSansSerif;
+    }
+
+    main .textoAccesorios {
+        margin-top: 3px;
+    }
+
+
+    main .textoAccesorios h4 {
+        font-size: 15px;
+        font-family: $fontSansSerif;
+    }
+
+    main .textoAccesorios p {
+        font-size: 10px;
+        font-family: $fontSansSerif;
+    }
+
+    .footerflex {
+        flex-direction: column;
+    }
+
+    .footerflex ul {
+        max-width: 35vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footerflex div p {
+        max-width: 100%;
+        margin-top: 0%;
+        margin-bottom: 0%;
+        display: inline;
+        font-size: x-small;
+
+    }
+
+    main .tituloPrincipal h1 {
+        margin-top: 30px;
+    }
+
+    main .tituloPrincipal h2 {
+        margin: 20px;
+        font-size: 10px;
+        margin-bottom: 20px;
+        width: 100vw;
+    }
+
+    main .textoBebidas .gridIndexButton {
+        padding-top: 5px;
+        transform: skew(-10deg);
+        transition: 3s;
+        font-size: 9px;
+    }
+
+    main .textoAccesorios .gridIndexButton {
+        padding-top: 5px;
+        // background-color: darkgray;
+        transform: skew(-10deg);
+        transition: 3s;
+        font-size: 9px;
+    }
+
+    section .imagenCoctelGinTonic {
+        grid-area: imagenCoctelGinTonic;
+        background-image: url("../img/GinTonic.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 70vh;
+        margin: 5px;
+
+    }
+
+
+    section .imagenCoctelKirRoyal {
+        grid-area: imagenCoctelKirRoyal;
+        background-image: url("../img/KirRoyal.jpg");
+        background-size: cover;
+        margin: 5px;
+        background-repeat: no-repeat;
+        height: 70vh;
+
+    }
+
+    section .imagenCoctelFitzgerald {
+        grid-area: imagenCoctelFitzgerald;
+        background-image: url("../img/Fitzgerald.jpg");
+        background-size: cover;
+        margin: 5px;
+        background-repeat: no-repeat;
+        height: 70vh;
+
+    }
+
+    section .imagenCoctelFitzgerald p {
+        width: 86vw;
+        font-style: italic;
+        font-size: large;
+        margin: 10px;
+        padding: 15px;
+    }
+
+    section .imagenCoctelKirRoyal p {
+        width: 86vw;
+        font-style: italic;
+        font-size: large;
+        margin: 10px;
+        padding: 15px;
+    }
+
+    section .imagenCoctelGinTonic p {
+        max-width: 86vw;
+        font-style: italic;
+        font-size: large;
+        margin: 10px;
+        padding: 15px;
+
+    }
+
+    .gridBebidasVenta {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.1fr 1fr 1fr 1fr 1fr 0.1fr;
+        grid-template-areas:
+            "headerflex headerflex "
+            "imagenCampari imagenPuertoIndias"
+            "imagenBramble imagenCapel "
+            "imagenNegroni imagenHeraclito"
+            "imagenJackDaniels imagenRonAvana "
+            "footerflex footerflex ";
+    }
+
+    .imagenPuertoIndias img {
+        width: 25vw;
+        /* height: 100px; */
+    }
+
+    .imagenJackDaniels img {
+        width: 40vw;
+    }
+
+    .imagenRonAvana img {
+        width: 40vw;
+    }
+
+    .imagenNegroni img {
+        width: 40vw;
+    }
+
+    .imagenBramble img {
+        width: 25vw;
+    }
+
+    .imagenCampari img {
+        width: 25vw;
+    }
+
+    .imagenCapel img {
+        width: 25vw;
+    }
+
+    .imagenHeraclito img {
+        width: 25vw;
+    }
+
+    .gridAccesoriosVenta {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.1fr 0.5fr 0.1fr 0.5fr 0.1fr 0.5fr 0.1fr 0.5fr 0.1fr 0.5fr 0.1fr 0.5fr 0.1fr 0.1fr;
+        grid-template-areas:
+            "tituloAccesorio"
+            "imagenCopasCristal"
+            "textoCopasCristal"
+            "imagenCoctelera"
+            "textoCoctelera"
+            "imagenSetBoston"
+            "textoSetBoston "
+            "imagenBarraCoctelera"
+            "textoBarraCoctelera"
+            "imagenPortadorCoctel"
+            "textoPortadorCoctel"
+            "imagenSetDeluxe"
+            "textoSetDeluxe "
+            "footerflex ";
+    }
+
+    main .imagenSetBoston img {
+        width: 100vw;
+        height: 60vh;
+        margin-bottom: 0%;
+        margin-top: 0%;
+
+    }
+
+    main .imagenCoctelera img {
+        width: 100vw;
+        height: 60vh;
+        margin-bottom: 0%;
+        margin-top: 0%;
+    }
+
+    main .imagenCopasCristal img {
+        width: 100vw;
+        height: 60vh;
+        margin-bottom: 0px;
+
+    }
+
+    main .imagenBarraCoctelera img {
+        width: 100vw;
+        height: 60vh;
+        margin-bottom: 0%;
+        margin-top: 0%;
+
+    }
+
+    main .imagenPortadorCoctel img {
+        width: 100vw;
+        height: 60vh;
+        margin-bottom: 0%;
+        margin-top: 0%;
+    }
+
+    main .imagenSetDeluxe img {
+        width: 100vw;
+        height: 60vh;
+        margin-bottom: 0%;
+        margin-top: 0%;
+    }
+
+    header h1 span {
+        margin: 5px;
+        padding-bottom: 5px;
+        padding-left: 1px;
+        animation-name: girando;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+    }
+
+    .negrita {
+        color: black;
+        font-size: 15px;
+    }
+
+}
+
+
+
+@keyframes tituloAnimacion {
+    0% {
+        background-image: linear-gradient(0deg, rgba(178, 180, 180, 1) 0%, rgba(246, 216, 152, 1) 100%);
+    }
+
+    25% {
+        background-image: linear-gradient(0deg, rgba(178, 180, 180, 1) 0%, rgba(246, 216, 152, 1) 100%);
+        opacity: 0.5;
+    }
+
+    50% {
+        background-image: linear-gradient(0deg, rgba(178, 180, 180, 1) 0%, rgba(246, 216, 152, 1) 100%);
+        opacity: 0.7;
+    }
+
+    75% {
+        background-image: linear-gradient(0deg, rgba(178, 180, 180, 1) 0%, rgba(246, 216, 152, 1) 100%);
+        opacity: 0.8;
+    }
+
+    100% {
+        background-image: linear-gradient(0deg, rgba(178, 180, 180, 1) 0%, rgba(246, 216, 152, 1) 100%);
+        opacity: 0.9;
+    }
+
+}
+
+@keyframes girando {
+    0% {
+        transform: rotatex(0deg)
+    }
+
+    5% {
+        transform: rotatex(20deg)
+    }
+
+    10% {
+        transform: rotatex(40deg)
+    }
+
+    15% {
+        transform: rotatex(60deg)
+    }
+
+    20% {
+        transform: rotatex(80deg)
+    }
+
+    25% {
+        transform: rotatex(100deg)
+    }
+
+    30% {
+        transform: rotatex(120deg)
+    }
+
+    35% {
+        transform: rotatex(140deg)
+    }
+
+    40% {
+        transform: rotatex(160deg)
+    }
+
+    45% {
+        transform: rotatex(180deg)
+    }
+
+    50% {
+        transform: rotatex(200deg)
+    }
+
+    60% {
+        transform: rotatex(220deg)
+    }
+
+    65% {
+        transform: rotatex(240deg)
+    }
+
+    70% {
+        transform: rotatex(260deg)
+    }
+
+    75% {
+        transform: rotatex(280deg)
+    }
+
+    80% {
+        transform: rotatex(300deg)
+    }
+
+    85% {
+        transform: rotatex(320deg)
+    }
+
+    90% {
+        transform: rotatex(340deg)
+    }
+
+    95% {
+        transform: rotatex(360deg)
+    }
+
+    100% {
+        transform: rotatex(380deg)
+    }
+
+}

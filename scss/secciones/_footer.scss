@@ -1,0 +1,82 @@
+footer {
+    div {
+        img {
+            max-width: 50px;
+            max-height: 50px;
+            margin: 5px;
+            padding-bottom: 5px;
+            padding-left: 5px;
+        }
+
+        p {
+            margin: 10px;
+            max-width: 20vw;
+            font-size: small;
+            display: inline;
+        }
+    }
+
+
+    ul {
+        max-width: 50vw;
+        margin: 10px 200px 10px 50px;
+        padding-left: 0px;
+        // padding-top: 15px;
+
+        li {
+            list-style: none;
+
+            a i {
+                color: $colorNav;
+            }
+        }
+    }
+}
+
+
+.footerflex {
+    grid-area: footerflex;
+    flex-wrap: wrap;
+    display: flex;
+    color: $colorNav;
+    background-color: $colorFooter;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.gridCorreo {
+    display: grid;
+    justify-items: center;
+    justify-content: space-between;
+    grid-template-columns: 1fr 0.7fr;
+    grid-template-rows: 0.1fr 0.01fr 0.01fr;
+    grid-template-areas:
+        "correo celular"
+        "correo1 celular1"
+        "correo2 celular2";
+}
+
+
+.correo {
+    grid-area: correo;
+}
+
+.celular {
+    grid-area: celular;
+}
+
+.correo1 {
+    grid-area: correo1;
+}
+
+.celular1 {
+    grid-area: celular1;
+}
+
+.correo2 {
+    grid-area: correo2;
+}
+
+.celular2 {
+    grid-area: celular2;
+}

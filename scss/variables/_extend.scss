@@ -1,0 +1,60 @@
+%estilo-x {
+    font-size: calc(1em + 1vw);
+    line-height: 1em;
+}
+
+%gridIndexButton {
+    font-size: small;
+    background-color: darkgray;
+    transform: skew(-10deg);
+    transition: 3s;
+    @extend %estilo-x;
+    padding: 1rem;
+
+    &:hover {
+        background-color: rgb(241, 241, 127);
+        transform: scale(1.2);
+        transition: 1s;
+    }
+}
+
+%imgIndex {
+    width: 97vw;
+    object-fit: fill;
+}
+
+%imagenPIndex {
+    background-color: $colorTextoImagenIndex;
+    color: black;
+    padding-left: 1rem;
+}
+
+%coctelesP {
+    max-width: 50vw;
+    color: $colorTextoBebidas;
+    font-style: italic;
+    font-size: x-large;
+    margin: 10vw;
+    background-color: rgba(128, 128, 128, 0.5);
+    padding: 15px;
+
+    &:hover {
+        animation: girando;
+        animation-duration: 3s;
+        animation-iteration-count: initial;
+    }
+}
+
+%accesoriosImg {
+    width: 20vw;
+    height: 40vh;
+    margin-left: 5px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    object-fit: cover;
+
+    &:hover {
+        transition: .2s;
+        filter: blur(2px);
+    }
+}

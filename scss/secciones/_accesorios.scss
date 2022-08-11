@@ -1,0 +1,97 @@
+main {
+    .tituloAccesorio {
+        grid-area: tituloAccesorio;
+
+        .separador {
+            background-color: $colorTextoBebidas;
+            height: 5px;
+        }
+    }
+
+    .imagenCopasCristal {
+        grid-area: imagenCopasCristal;
+
+        img {
+            @extend %accesoriosImg;
+        }
+    }
+
+    .textoCopasCristal {
+        @include accesoriosTexto(textoCopasCristal)
+    }
+
+    .imagenCoctelera {
+        grid-area: imagenCoctelera;
+
+        img {
+            @extend %accesoriosImg;
+        }
+    }
+
+    .textoCoctelera {
+        @include accesoriosTexto(textoCoctelera)
+    }
+
+    .imagenSetBoston {
+        grid-area: imagenSetBoston;
+
+        img {
+            @extend %accesoriosImg;
+        }
+    }
+
+    .textoSetBoston {
+        @include accesoriosTexto(textoSetBoston)
+    }
+
+    .imagenBarraCoctelera {
+        grid-area: imagenBarraCoctelera;
+
+        img {
+            @extend %accesoriosImg;
+
+        }
+    }
+
+    .textoBarraCoctelera {
+        @include accesoriosTexto(textoBarraCoctelera)
+    }
+
+    .imagenPortadorCoctel {
+        grid-area: imagenPortadorCoctel;
+
+        img {
+            @extend %accesoriosImg;
+        }
+    }
+
+    .textoPortadorCoctel {
+        @include accesoriosTexto(textoPortadorCoctel)
+    }
+
+    .imagenSetDeluxe {
+        grid-area: imagenSetDeluxe;
+
+        img {
+            @extend %accesoriosImg;
+        }
+    }
+
+    .textoSetDeluxe {
+        @include accesoriosTexto(textoSetDeluxe)
+    }
+
+}
+
+.gridAccesoriosVenta {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.1fr 1fr 1fr 0.1fr;
+    grid-template-areas:
+        "tituloAccesorio tituloAccesorio tituloAccesorio tituloAccesorio tituloAccesorio tituloAccesorio "
+        "imagenCopasCristal textoCopasCristal imagenCoctelera textoCoctelera imagenSetBoston textoSetBoston "
+        "imagenBarraCoctelera textoBarraCoctelera imagenPortadorCoctel textoPortadorCoctel imagenSetDeluxe textoSetDeluxe "
+        "footerflex footerflex footerflex footerflex footerflex footerflex ";
+
+}

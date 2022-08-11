@@ -1,0 +1,56 @@
+.formulario {
+    div div .separador {
+        background-color: $colorTextoBebidas;
+        height: 5px;
+    }
+
+    form {
+        input {
+            color: rgb(32, 32, 16);
+            border-radius: 15px;
+            text-align: center;
+
+            &:hover {
+                background-color: rgb(243, 165, 165);
+            }
+
+            &:focus:not(#flexCheckDefault):not(#exampleRadios1):not(#exampleRadios3):not(#exampleRadios2) {
+                width: 400px;
+                background-color: yellow;
+            }
+        }
+
+        div {
+            select {
+                &:hover {
+                    background-color: rgb(243, 165, 165);
+                }
+            }
+
+            div {
+                textarea {
+                    max-width: 60vw;
+
+                }
+            }
+
+            iframe {
+                max-width: 90vw;
+                padding: 20px;
+            }
+
+        }
+    }
+}
+
+#botonEnvio {
+    &:hover {
+        background-color: brown;
+    }
+}
+
+#exampleFormControlTextarea1 {
+    &:hover {
+        background-color: rgb(243, 165, 165);
+    }
+}

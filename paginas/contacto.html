@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="bartender,contacto,nombre,apellido,email,Whatsapp">
+    <meta name="descripcion"
+        content="Ingresa tus datos nombre,apellido,email para ofrecerte estos productos y nos contactamos por mail o Whatsapp">
+    <script src="https://kit.fontawesome.com/ee4c7fd476.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../img/bartender.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>contacto | bartender</title>
+</head>
+
+<body class="body">
+    <!-- Encabezado -->
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Bartender</a>
+                <nav class="navbar">
+                    <div class="container">
+                        <a class="navbar-brand" href="../index.html">
+                            <img src="../img/bartender2-removebg-preview.png" alt="logo bartender" width="40"
+                                height="40">
+                        </a>
+                    </div>
+                </nav>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../paginas/cocteles.html">Cocteles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../paginas/bebidas.html">Bebidas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../paginas/accesorios.html">Accesorios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../paginas/carrito.html">Carrito</a>
+                            <img src="../img/carrito-de-compras.png" alt="logo carrito" width="40"
+                                height="40">
+
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <!-- Fin de Encabezado -->
+    <!-- Principal  -->
+    <main class="container formulario">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-3">Contacto</h1>
+                <hr class="separador">
+            </div>
+        </div>
+        <form class="row">
+            <div class="col-12 col-md-6">
+                <div class="mb-1">
+                    <label for="exampleFormControlInput1" class="form-label">Nombre y Apellido</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Juan Perez">
+                </div>
+                <div class="mb-1">
+                    <label for="exampleFormControlInput2" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput2"
+                        placeholder="name@example.com">
+                </div>
+                <div class="mb-1">
+                    <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div class="form-check mb-1">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Se subscribe para recibir nueva informacion
+                    </label>
+                </div>
+                <label class="form-label mb-2">
+                    Seleccione su sexo
+                </label>
+                <div class="form-check">
+
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                        value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Hombre
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                        value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Mujer
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3"
+                        value="option3">
+                    <label class="form-check-label" for="exampleRadios3">
+                        No sabe
+                    </label>
+                </div>
+                <select class="form-select m-1 lh-1" aria-label="Default select example">
+                    <option selected>Seleccione su pais</option>
+                    <option value="1">Argentina</option>
+                    <option value="2">Chile</option>
+                    <option value="3">Paraguay</option>
+                    <option value="4">Peru</option>
+                </select>
+                <div class="mb-1 mt-1">
+                    <input type="reset" value="Borrar todos los datos ingresados en el formulario">
+                </div>
+                <div>
+                    <button type="button" class="btn btn-dark w-100 fs-4 mb-4 mt-3" id="botonEnvio">Enviar</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3279.483390034464!2d-58.28344028468448!3d-34.71820797107216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32de2b407357b%3A0xe29910a019363b6c!2sMaip%C3%BA%2063%2C%20Bernal%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1655311583728!5m2!1ses!2sar"
+                    width="500" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+        </form>
+    </main>
+
+    <footer class="footerflex">
+        <div>
+            <img src="../img/logoempresa.bmp" alt="logo empresa">
+            <p>Todos los derechos reservados Horacio Carmona 2022 ©</p>
+        </div>
+        <div class="gridCorreo">
+            <div class="correo">
+                <p>correo electronico</p>
+            </div>
+            <div class="celular">
+                <p>celuldar</p>
+            </div>
+            <div class="correo1">
+                <p>carmona_horacio@hotmail.com</p>
+            </div>
+            <div class="celular1">
+                <p>1567373051</p>
+            </div>
+            <div class="correo2">
+                <p>horacio.carmona@gmail.com</p>
+            </div>
+            <div class="celular2">
+                <p>1556565432</p>
+            </div>
+
+        </div>
+        <ul>
+            <li><a href="http://www.facebook.com" tarjet="_blank"><i class="fa-brands fa-lg fa-facebook"></i></a></li>
+            <li><a href="http://www.Instagram.com" tarjet="_blank"><i class="fa-brands fa-lg fa-instagram"></i></a></li>
+            <li><a href="http://www.youtube.com" tarjet="_blank"><i class="fa-brands fa-lg fa-youtube"></i></a></li>
+            <li><a href="http://wa.me/05491167373051" tarjet="_blank"><i class="fa-brands fa-lg fa-whatsapp"></i></a>
+            </li>
+        </ul>
+    </footer>
+
+    <!-- Pie de pagina -->
+    <!-- Fin de pie de pagina -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>

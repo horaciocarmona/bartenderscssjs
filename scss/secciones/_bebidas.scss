@@ -1,0 +1,27 @@
+.body .containter {
+    max-width: 99%;
+}
+
+main {
+    background-color: $colorDeFondo;
+    .row{
+         align-items:flex-end;
+
+    }
+    article div{
+        // display: flex;
+        // align-items:flex-end;
+        // justify-content: center;
+        // flex-direction: column;
+        img {
+            &:hover {
+                background-color: rgb(55, 55, 56);
+            }
+        }
+    }
+
+    div div div .separador {
+        background-color: $colorTextoBebidas;
+        height: 5px;
+    }
+}

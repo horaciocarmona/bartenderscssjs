@@ -1,0 +1,144 @@
+main {
+    .tituloPrincipal {
+        grid-area: tituloPrincipal;
+        background-color: $backgroundTituloPrincipalIndex;
+        animation-name: tituloAnimacion;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        max-width: 100vw;
+
+        h1 {
+            @include hIndex(10px, 20vw, 0px, 30px, 60vw)
+        }
+
+        h2 {
+            @include hIndex(0px, 10vw, 20px, 20px, 80vw)
+        }
+
+        &:hover {
+            transition: 2s;
+            background-color: rgb(243, 126, 126);
+        }
+    }
+
+    .imagenBebidas {
+        @include imagenBebidasAccesorios(imagenBebidas);
+
+        img {
+            @extend %imgIndex;
+        }
+
+        p {
+            @extend %imagenPIndex;
+        }
+    }
+
+    .textoBebidas {
+        grid-area: textoBebidas;
+        margin: 40px 20px 20px 0px;
+        align-self: normal;
+
+        h3 {
+            color: $colorTextoImagenIndex;
+            font-family: $fontBebidasAccesorios;
+            font-size: xx-large;
+        }
+
+        p {
+            color: $colorTextoImagenIndex;
+            background-color: rgba(128, 128, 128, 0.7);
+            max-width: 40vw;
+            font-size: 20px;
+            font-family: $fontTextoPGrid;
+            padding: 15px;
+        }
+
+        @extend %estilo-x;
+
+        &:hover {
+            transform: scale(0.8);
+            transition: 1s;
+        }
+
+        .gridIndexButton {
+            @extend %gridIndexButton;
+        }
+    }
+
+    .imagenAccesorios {
+        @include imagenBebidasAccesorios(imagenAccesorios);
+
+        img {
+            @extend %imgIndex;
+        }
+
+        p {
+            @extend %imagenPIndex;
+        }
+
+        .arriba {
+            background-color: $colorNav;
+            margin-left: 90vw;
+            width: 100vw;
+            padding: 5px;
+
+            &:hover {
+                background-color: rgb(241, 241, 127);
+                transform: scale(1.2);
+            }
+
+            i {
+                &:hover {
+                    background-color: rgb(241, 241, 127);
+                    transform: scale(1.2);
+                }
+            }
+        }
+
+    }
+
+    .textoAccesorios {
+        grid-area: textoAccesorios;
+        margin: 40px 20px 20px 0px;
+        align-self: normal;
+
+        h4 {
+            color: $colorTextoImagenIndex;
+            font-family: $fontBebidasAccesorios;
+            font-size: xx-large;
+        }
+
+        p {
+            color: $colorTextoImagenIndex;
+            font-family: $fontTextoPGrid;
+            background-color: rgba(128, 128, 128, 0.7);
+            padding: 15px;
+            max-width: 40vw;
+            font-size: 20px;
+            @extend %estilo-x;
+        }
+
+        &:hover {
+            transform: scale(0.8);
+            transition: 1s;
+        }
+
+        .gridIndexButton {
+            @extend %gridIndexButton;
+        }
+    }
+
+
+}
+
+.gridIndex {
+    display: grid;
+    align-items: stretch;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.1fr 0.5 0.5fr 0.1fr;
+    grid-template-areas:
+        "tituloPrincipal tituloPrincipal "
+        "imagenBebidas textoBebidas"
+        "imagenAccesorios textoAccesorios"
+        "footerflex footerflex";
+}
