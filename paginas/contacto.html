@@ -9,7 +9,7 @@
     <meta name="descripcion"
         content="Ingresa tus datos nombre,apellido,email para ofrecerte estos productos y nos contactamos por mail o Whatsapp">
     <script src="https://kit.fontawesome.com/ee4c7fd476.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="../img/bartender.png">
+    <link rel="shortcut icon" href="../img/bartender2.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
@@ -18,7 +18,8 @@
 
 <body class="body">
     <!-- Encabezado -->
-
+   
+    <script async src="../js/contacto.js"></script>
     <header>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
@@ -78,11 +79,25 @@
         <form class="row">
             <div class="col-12 col-md-6">
                 <div class="mb-1">
-                    <label for="exampleFormControlInput1" class="form-label">Nombre y Apellido</label>
+                    <label for="exampleFormControlInput1" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="usuario" placeholder="ingrese usuario">
+                    <p class="mensajeIngreso">mensaje</p>
+                </div>
+                <div class="mb-1">
+                    <label for="exampleFormControlInput2" class="form-label">clave</label>
+                    <input type="text" class="form-control" id="claveUsuario" placeholder="ingrese clave">
+                    <p class="mensajeIngreso">Mensaje</p>
+                </div>
+                <div class="mb-1">
+                    <button type="button" onclick="verificarCliente()" class="btn btn-dark w-100 fs-4 mb-4 mt-3" >Validar Usuario</button>
+                </div>
+
+                <div class="mb-1">
+                    <label for="exampleFormControlInput3" class="form-label">Nombre y Apellido</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Juan Perez">
                 </div>
                 <div class="mb-1">
-                    <label for="exampleFormControlInput2" class="form-label">Email</label>
+                    <label for="exampleFormControlInput4" class="form-label">Email</label>
                     <input type="email" class="form-control" id="exampleFormControlInput2"
                         placeholder="name@example.com">
                 </div>
