@@ -77,85 +77,89 @@
             </div>
         </div>
         <form class="row">
-            <div class="col-12 col-md-6">
-                <div class="mb-1">
+            <div id="idCliente" class="col-12 col-md-6">
+                <div id="idDivLogin" class="mb-1">
                     <label for="exampleFormControlInput1" class="form-label">Usuario</label>
-                    <input type="text" class="form-control" id="usuario" placeholder="ingrese usuario">
+                    <input type="text" class="form-control" id="idUsuario" placeholder="ingrese usuario">
                     <p class="mensajeIngreso">mensaje</p>
-                </div>
-                <div class="mb-1">
+                <!-- </div> -->
+                <!-- <div class="mb-1"> -->
                     <label for="exampleFormControlInput2" class="form-label">clave</label>
-                    <input type="text" class="form-control" id="claveUsuario" placeholder="ingrese clave">
+                    <input type="text" class="form-control" id="idClaveUsuario" placeholder="ingrese clave">
                     <p class="mensajeIngreso">Mensaje</p>
-                </div>
-                <div class="mb-1">
-                    <button type="button" onclick="verificarCliente()" class="btn btn-dark w-100 fs-4 mb-4 mt-3" >Validar Usuario</button>
+                <!-- </div> -->
+                <!-- <div class="mb-1"> -->
+                    <button type="button" onclick="verificarCliente()" class="btn btn-dark w-100 fs-4 mb-4 mt-3 botonEnvio" >Validar Usuario</button>
                 </div>
 
-                <div class="mb-1">
+                <div id="idDivNombreCliente" class="mb-1">
                     <label for="exampleFormControlInput3" class="form-label">Nombre y Apellido</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Juan Perez">
+                    <input type="text" readonly class="form-control" id="idNombreCliente" placeholder="Juan Perez">
                 </div>
-                <div class="mb-1">
+                <div id="idDivEmailCliente" class="mb-1">
                     <label for="exampleFormControlInput4" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput2"
+                    <input type="email" readonly class="form-control" id="idEmailCliente"
                         placeholder="name@example.com">
                 </div>
-                <div class="mb-1">
+                <div  id="idDivTextoCliente" class="mb-1">
                     <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" readonly id="idTextoCliente" rows="3"></textarea>
                 </div>
-                <div class="form-check mb-1">
+                <div id="idOcultaDivAltaSuscribe" class="form-check mb-1" >
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label class="form-check-label" readonly for="flexCheckDefault">
                         Se subscribe para recibir nueva informacion
                     </label>
                 </div>
-                <label class="form-label mb-2">
+                <label id="idOcultaLabelSexo" class="form-label mb-2">
                     Seleccione su sexo
                 </label>
-                <div class="form-check">
+                <div id="idOcultaDivSexoHombre" class="form-check">
 
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                    <input class="form-check-input" readonly type="radio" name="exampleRadios" id="exampleRadios1"
                         value="option1" checked>
-                    <label class="form-check-label" for="exampleRadios1">
+                    <label class="form-check-label" readonly for="exampleRadios1">
                         Hombre
                     </label>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                <div id="idOcultaDivSexoMujer" class="form-check" >
+                    <input class="form-check-input" readonly type="radio" name="exampleRadios" id="exampleRadios2"
                         value="option2">
                     <label class="form-check-label" for="exampleRadios2">
                         Mujer
                     </label>
                 </div>
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3"
+                <div id="idOcultaDivSexoNoSabe" class="form-check mb-3">
+                    <input class="form-check-input" readonly type="radio" name="exampleRadios" id="exampleRadios3"
                         value="option3">
                     <label class="form-check-label" for="exampleRadios3">
                         No sabe
                     </label>
                 </div>
-                <select class="form-select m-1 lh-1" aria-label="Default select example">
+                <select id="idOcultaSelectPais" class="form-select m-1 lh-1" aria-label="Default select example">
                     <option selected>Seleccione su pais</option>
                     <option value="1">Argentina</option>
                     <option value="2">Chile</option>
                     <option value="3">Paraguay</option>
                     <option value="4">Peru</option>
                 </select>
-                <div class="mb-1 mt-1">
+                <div id="idBorrarDatosIngresados" class="mb-1 mt-1">
                     <input type="reset" value="Borrar todos los datos ingresados en el formulario">
                 </div>
-                <div>
-                    <button type="button" class="btn btn-dark w-100 fs-4 mb-4 mt-3" id="botonEnvio">Enviar</button>
+                <div id="idTextoTarea">
+                    <p>Clientes Ingresados</p>
+                    <!-- <button type="button" class="btn btn-dark w-100 fs-4 mb-4 mt-3 botonEnvio">Enviar</button> -->
+                    <ul id="listadoUL">
+
+                    </ul>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            <!-- <div class="col-12 col-md-6">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3279.483390034464!2d-58.28344028468448!3d-34.71820797107216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32de2b407357b%3A0xe29910a019363b6c!2sMaip%C3%BA%2063%2C%20Bernal%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1655311583728!5m2!1ses!2sar"
                     width="500" height="500" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+            </div> -->
 
         </form>
     </main>

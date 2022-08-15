@@ -372,7 +372,7 @@ main .textoSetDeluxe {
   max-width: 90vw;
   padding: 20px; }
 
-#botonEnvio:hover {
+.botonEnvio:hover {
   background-color: brown; }
 
 #exampleFormControlTextarea1:hover {
