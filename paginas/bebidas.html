@@ -11,12 +11,14 @@
 
     <link rel="shortcut icon" href="../img/bartender2.png">
     <script src="https://kit.fontawesome.com/ee4c7fd476.js" crossorigin="anonymous"></script>
-
+<!-- Bootstrap Jquery JavaScripts  -->
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- Bootstrap Jquery JavaScripts  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    
     <link rel="stylesheet" href="../css/style.css">
     <title>bebidas | bartender</title>
 </head>
@@ -58,9 +60,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../paginas/carrito.html">Carrito</a>
-                            <img src="../img/carrito-de-compras.png" alt="logo carrito" width="40"
-                                height="40">
-
                         </li>
 
                     </ul>
@@ -75,66 +74,110 @@
         <div class="row mt-2">
             <div class="col">
                 <div class="col-12">
-                    <h1 class="display-6 m-2 ">Te ofrecemos la mejor calidad en bebidas</h1>
+                    <h1 class="display-6 m-2 d-inline">Te ofrecemos la mejor calidad en bebidas</h1>
+                    <button class="btn" id="buttonCarrito">
+                        <img src="../img/carrito-de-compras.png" alt="logo carrito" width="40"
+                            height="40">
+                    </button>
                     <hr class="separador">
                 </div>
             </div>
         </div>
-        <article class="row">
-            <div class="col-12 col-md-3 col-sm-6 col-xl-3">
-                <img src="../img/campari.png" class="rounded mx-auto d-block imagenhover" alt="Campqari">
-                 <p class="text-center">Campari 750ml ,<br>
-                     precio 1800$</p>
-                 <button type="button" class="btn  btn-outline-info btn-block">Comprar</button>
-                
-            </div>
-            <div class="col-12 col-md-3 col-sm-6 col-xl-3">
+          <article class="row" id="contenedorProductos">
+            <!-- <div class="col-12 col-md-3 col-sm-6 col-xl-3 producto">
+                <img src="../img/campari.png" class="rounded mx-auto d-block imagenhover" alt="Campari">
+                <div class="card-body">
+                    <h5 class="text-center">Campari 750ml</h5>
+                    <p class="text-center">precio 1800$</p>
+                    <a href="#" class="btn btn-primary btn-block">Comprar</a>
+                </div>
+            </div> -->
+            <!-- <div class="col-12 col-md-3 col-sm-6 col-xl-3">
                 <img src="../img/puertodeindiasclasic.png" class="rounded mx-auto d-block imagenhover"
                     alt="puertoIndias">
-                <p class="text-center">Puerto de inidas
-                    clasico 700ml, precio 2500$</p>
-                    <button type="button" class="btn  btn-outline-info btn-block">Comprar</button>
-
+                    <div class="card-body">
+                        <h5 class="text-center">Puerto de indias clasico 700ml</h5>
+                        <p class="text-center">precio 2500$</p>
+                        <a href="#" class="btn btn-primary btn-block">Comprar</a>
+                    </div>
             </div>
             <div class="col-12 col-md-3 col-sm-6 col-xl-3">
                 <img src="../img/bombay bramle.png" class="rounded mx-auto d-block imagenhover" alt="Bombay Bramble">
-                <p class="text-center">Gin Bombay Bramble 700, <br> precio 3800$</p>
-                <button type="button" class="btn  btn-outline-info btn-block">Comprar</button>
+                <div class="card-body">
+                    <h5 class="text-center">Gin Bombay Bramble 700</h5>
+                    <p class="text-center">precio 3800$</p>
+                    <a href="#" class="btn btn-primary btn-block">Comprar</a>
+                </div>
             </div>
             <div class="col-12 col-md-3 col-sm-6 col-xl-3">
                 <img src="../img/capelreservadotransparente.png" class="rounded mx-auto d-block imagenhover"
                     alt="Capel reservado">
-                <p class="text-center">Capel reservado 
-                    clasico 700ml, precio 4200$</p>
-                    <button type="button" class="btn  btn-outline-info btn-block">Comprar</button>
+                    <div class="card-body">
+                        <h5 class="text-center">Capel reservado clasico 700ml</h5>
+                        <p class="text-center">precio 4200$</p>
+                        <a href="#" class="btn btn-primary btn-block">Comprar</a>
+                    </div>
 
-            </div>
+            </div> -->
         </article>
-        <article class="row mb-3 mt-2">
+        <!-- <article class="row mb-3 mt-2">
             <div class="col-12 col-md-3 col-sm-6  col-xl-3">
                 <img src="../img/negroni.png" class="rounded mx-auto d-block imagenhover" alt="Negroni">
-                <p class="text-center">Negroni 750ml, <br> precio 5000$</p>
-                <button type="button" class="btn  btn-outline-info btn-block">Comprar</button>
+                <div class="card-body">
+                    <h5 class="text-center">Negroni 750ml</h5>
+                    <p class="text-center">precio 5000$</p>
+                    <a href="#" class="btn btn-primary btn-block">Comprar</a>
+                </div>
             </div>
             <div class="col-12 col-md-3 col-sm-6  col-xl-3">
                 <img src="../img/heraclitolondondry.png" class="rounded mx-auto d-block imagenhover" alt="Heraclito">
-                <p class="text-center"> Heraclito
-                    clasico 700ml, <br> precio 4500$</p>
-                    <button type="button" class="btn  btn-outline-info btn-block">Comprar</button>
+                <div class="card-body">
+                    <h5 class="text-center">Heraclito clasico 700ml</h5>
+                    <p class="text-center">precio 4500$</p>
+                    <a href="#" class="btn btn-primary btn-block">Comprar</a>
+                </div>
             </div>
             <div class="col-12 col-md-3 col-sm-6  col-xl-3">
                 <img src="../img/whiskyjackdaniels.png" class="rounded mx-auto d-block imagenhover"
                     alt="Whisky Jack Daniels">
-                <p class="text-center">Whisky Jack Daniels 750ml, precio 12000$</p>
-                <button type="button" class="btn  btn-outline-info btn-block">Comprar</button>
+                    <div class="card-body">
+                        <h5 class="text-center">Whisky Jack Daniels 750ml</h5>
+                        <p class="text-center">precio 12000$</p>
+                        <a href="#" class="btn btn-primary btn-block">Comprar</a>
+                    </div>
             </div>
             <div class="col-12 col-md-3 col-sm-6 col-xl-3">
                 <img src="../img/ronavanaclub.png" class="rounded mx-auto d-block imagenhover" alt="Ron Avana Club">
-                <p class="text-center">Ron Avana Club
-                    clasico 700ml, precio 6300$</p>
-                    <button type="button" class="btn  btn-outline-info btn-block">Comprar</button>
+                <div class="card-body">
+                    <h5 class="text-center">Ron Avana Club clasico 700ml</h5>
+                    <p class="text-center">precio 6300$</p>
+                    <a href="#" class="btn btn-primary btn-block">Comprar</a>
+                </div>
             </div>
-        </article>
+        </article> -->
+        <div class="modal" id="ventanaCarrito" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content" id="contenedorCarrito">
+                <div class="modal-header">
+                  <h5 class="modal-title">Carrito de Compra</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" >
+                  <p>Listado de Productos</p>
+                  <!-- <h5 class="text-center">Campari 750ml</h5>
+                  <p class="text-center">precio 1800$</p>
+                  <a href="#" class="btn btn-primary btn-block botonEliminar">Eliminar</a> -->
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </main>
     <!--Fin Principal  -->
     <!-- Pie de pagina -->
@@ -177,7 +220,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
     </script>
-  <script async src="../js/funciones.js"></script>
+  <!-- <script async src="../js/funciones.js"></script> -->
+  <script src="../js/stockProductos.js"></script>
+  <script src="../js/bebidas.js"></script>
 
 </body>
 
