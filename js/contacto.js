@@ -9,24 +9,27 @@ document.querySelector(`#idDivNombreCliente`).style.display="none";
 document.querySelector(`#idDivEmailCliente`).style.display="none";
 document.querySelector(`#idDivTextoCliente`).style.display="none";
 let listadoClientesIngresados=[];
+let mensaje;
 
 class cliente{
-    constructor(nombre,usuario,clave,edad,sexo,domicilio,pais,tiempoIngreso,tiempoSalida,email)
+    constructor(obj)
     {
-        this.nombre=nombre;
-        this.usuario=usuario;
-        this.clave=clave;
-        this.edad=edad;
-        this.sexo=sexo;
-        this.domicilio=domicilio;
-        this.pais=pais;
-        this.tiempoIngreso=tiempoIngreso;
-        this.tiempoSalida=tiempoSalida;
-        this.email=email;
+        this.nombre=obj.nombre;
+        this.usuario=obj.usuario;
+        this.clave=obj.clave;
+        // this.edad=edad;
+        // this.sexo=sexo;
+        // this.domicilio=domicilio;
+        // this.pais=pais;
+        // this.tiempoIngreso=tiempoIngreso;
+        // this.tiempoSalida=tiempoSalida;
+        this.email=obj.email;
+        this.fechaIngreso=obj.fechaIngreso;
+
     }    
     retornarNodoLi(){
         let nodo=document.createElement("li");
-        nodo.innerText=` cliente: ${this.nombre}`;
+        nodo.innerText=` cliente: ${this.nombre} ultima fecha Ingreso: ${new Date(this.fechaIngreso)}`;
         return nodo;
     }
 }
@@ -48,10 +51,16 @@ function ingresaOtroCliente(){
 // tomar datos de una base de datos
 function traerClientesDeLaBase(){
   let clientes=[];
-  clientes.push(new cliente("juan","juan","1234",20,"masculino","maipu 63 bernal","Argentina",0,0,"juan@hotmail.com"));
-  clientes.push(new cliente("pedro","pedro","1111",30,"masculino","san martin 348 quilmes","Argentina",0,0,"pedro@hotmail.com"));
-  clientes.push(new cliente("jose","jose","6666",25,"femenino","cuchacucha 263 quito","Peru",0,0,"jose@hotmail.com"));
-  clientes.push(new cliente("carlos","carlos","9999",50,"masculino","junin 323","Argentina",0,0,"carlos@hotmail.com"));
+//   clientes.push(new cliente("juan","juan","1234",20,"masculino","maipu 63 bernal","Argentina",0,0,"juan@hotmail.com"));
+//   clientes.push(new cliente("pedro","pedro","1111",30,"masculino","san martin 348 quilmes","Argentina",0,0,"pedro@hotmail.com"));
+//   clientes.push(new cliente("jose","jose","6666",25,"femenino","cuchacucha 263 quito","Peru",0,0,"jose@hotmail.com"));
+//   clientes.push(new cliente("carlos","carlos","9999",50,"masculino","junin 323","Argentina",0,0,"carlos@hotmail.com"));
+
+  clientes.push(new cliente({nombre:"juan",usuario:"juan",clave:"1234",email:"juan@hotmail.com"}));
+  clientes.push(new cliente({nombre:"pedro",usuario:"pedro",clave:"1111",email:"pedro@hotmail.com"}));
+  clientes.push(new cliente({nombre:"jose",usuario:"jose",clave:"6666",email:"jose@hotmail.com"}));
+  clientes.push(new cliente({nombre:"carlos",usuario:"carlos",clave:"9999",email:"carlos@hotmail.com"}));
+
   return clientes;
 } 
 
@@ -60,11 +69,15 @@ function verificarCliente(){
     let clienteIngresado=document.getElementById("idUsuario").value;
     let listadoDeClientes=traerClientesDeLaBase();
     let unCliente=listadoDeClientes.find(cli => cli.usuario===clienteIngresado);
-    let mensaje;
+    mensaje="";
     if (unCliente) {
         if (unCliente.clave==claveUsuarioIngresado){
             mensaje="Bienvenido";
-            listadoClientesIngresados.push(unCliente);
+            unCliente.fechaIngreso=Date.now();
+            verificarIngresosAnteriores();
+            let objetoGenericoCliente={nombre:unCliente.nombre,usuario:unCliente.usuario,clave:unCliente.clave,email:unCliente.email,fechaIngreso:unCliente.fechaIngreso}
+            listadoClientesIngresados.push(new cliente(objetoGenericoCliente));
+            guardarClientesEnStorage(new cliente(objetoGenericoCliente));
             document.querySelector(`#idDivNombreCliente`).style.display="block";
             document.querySelector(`#idDivEmailCliente`).style.display="block";
             document.querySelector(`#idDivTextoCliente`).style.display="block";
@@ -72,16 +85,16 @@ function verificarCliente(){
             document.querySelector(`#idDivLogin`).style.display="none";
             document.getElementById(`idNombreCliente`).value=unCliente.nombre;
             document.getElementById(`idEmailCliente`).value=unCliente.email;
-            document.getElementById(`idTextoCliente`).value="Bienvenido, puede Comprar";
-            if (!document.body.contains(document.getElementById(`idButtonCompra`))){
-                let padre=document.getElementById(`idCliente`);
-                let buttonCompra=document.createElement("div");
-                buttonCompra.className="mb-1 mt-1";
-                buttonCompra.innerHTML=`<button type="button" id="idButtonCompra" class="btn btn-dark w-100 fs-4 mb-4 mt-3 botonEnvio" onclick="ingresaOtroCliente()">Comprar</button>`;
-                padre.appendChild(buttonCompra);
+            document.getElementById(`idTextoCliente`).value=mensaje+", puede Comprar ";
+        //     if (!document.body.contains(document.getElementById(`idButtonCompra`))){
+        //         let padre=document.getElementById(`idCliente`);
+        //         let buttonCompra=document.createElement("div");
+        //         buttonCompra.className="mb-1 mt-1";
+        //         buttonCompra.innerHTML=`<button type="button" id="idButtonCompra" class="btn btn-dark w-100 fs-4 mb-4 mt-3 botonEnvio" onclick="ingresaOtroCliente()">Comprar</button>`;
+        //         padre.appendChild(buttonCompra);
     
-            }
-           document.querySelector(`#idButtonCompra`).style.display="block";
+        //     }
+        //    document.querySelector(`#idButtonCompra`).style.display="block";
            
            mostrarListado();
             // // // // container.innerHTML=`<button type="button" class="btn btn-dark w-100 fs-4 mb-4 mt-3 botonEnvio">Comprar</button>`;
@@ -106,3 +119,19 @@ function mostrarListado(){
     }
 }
 
+function guardarClientesEnStorage(unCliente){
+    localStorage.setItem("listadoClientesIngresados",JSON.stringify(listadoClientesIngresados));   
+    sessionStorage.setItem("clienteLogeado",JSON.stringify(unCliente))
+}
+
+function verificarIngresosAnteriores(){
+    let listadoDeClientesAuxiliar=JSON.parse(localStorage.getItem("listadoClientesIngresados"));
+    listadoClientesIngresados=[];
+    if (listadoDeClientesAuxiliar){
+        for(elemento of listadoDeClientesAuxiliar){
+            listadoClientesIngresados.push(new cliente(elemento));
+        }
+    } else {
+        mensaje="Bienvenido no tuvo ingresos anteriores"
+    }
+}

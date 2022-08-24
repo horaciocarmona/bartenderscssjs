@@ -286,6 +286,8 @@ main {
   main div div div .separador {
     background-color: #FFE3C2;
     height: 5px; }
+  main .tituloCarritoH5 {
+    background-color: #FFE3C2; }
 
 main .tituloAccesorio {
   grid-area: tituloAccesorio; }
