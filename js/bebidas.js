@@ -2,6 +2,8 @@
 let carritoDeCompra = [];
 let productosParaCarrito = [] ;
 let listadoCarritosIngresados = [];
+let fechaIngreso;
+
 const contenerdorDeProductos = document.getElementById('contenedorProductos');
 const contenedorDeCarrito = document.getElementById('contenedorCarrito');
 const contenedorTituloDeCarrito = document.getElementById('tituloCarrito');
@@ -14,14 +16,23 @@ const clienteLogeado = JSON.parse(sessionStorage.getItem("clienteLogeado"));
 const p = document.createElement(`p`);
 let puedeComprar;
 
+// fecha y hora actual
+// const fechaActualDeCompra=DateTime.now();
 // Syntax ternario para si existe cliente logeado
 clienteLogeado ? puedeComprar = true : puedeComprar = false;
 // Syntax uso del operador ?
 if (puedeComprar) {
+
   p.innerHTML = `
    Nombre del cliente: ${clienteLogeado?.nombre || "La propiedad no existe"} 
   `
   contenedorTituloDeCarrito.appendChild(p);
+  fechaIngreso=clienteLogeado.fechaIngreso;
+  //establecemos 2hs 15 minutos para comprar
+  const dur = Duration.fromObject({ hours: 2, minutes: 15 });
+  const dt=DateTime.fromISO(fechaIngreso);
+
+  const tiempoParaComprar=dt.plus(dur);
   Toastify({
     text: `Bienvenido  ${clienteLogeado?.nombre || "La propiedad no existe"}`,
     duration: 2500,

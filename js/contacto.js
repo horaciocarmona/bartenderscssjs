@@ -10,7 +10,8 @@ document.querySelector(`#idDivEmailCliente`).style.display="none";
 document.querySelector(`#idDivTextoCliente`).style.display="none";
 let listadoClientesIngresados=[];
 let mensaje;
-
+const DateTime=luxon.DateTime;
+const fechaIngreso=DateTime.local();
 class cliente{
     constructor(obj)
     {
@@ -29,7 +30,7 @@ class cliente{
     }    
     retornarNodoLi(){
         let nodo=document.createElement("li");
-        nodo.innerText=` cliente: ${this.nombre} ultima fecha Ingreso: ${new Date(this.fechaIngreso)}`;
+        nodo.innerText=` cliente: ${this.nombre} ultima fecha Ingreso: ${this.fechaIngreso.toLocaleString(DateTime.DATETIME_SHORT)}`;
         return nodo;
     }
 }
@@ -73,7 +74,7 @@ function verificarCliente(){
     if (unCliente) {
         if (unCliente.clave==claveUsuarioIngresado){
             mensaje="Bienvenido";
-            unCliente.fechaIngreso=Date.now();
+            unCliente.fechaIngreso=fechaIngreso;
             verificarIngresosAnteriores();
             let objetoGenericoCliente={nombre:unCliente.nombre,usuario:unCliente.usuario,clave:unCliente.clave,email:unCliente.email,fechaIngreso:unCliente.fechaIngreso}
             listadoClientesIngresados.push(new cliente(objetoGenericoCliente));

@@ -1,9 +1,12 @@
 // boton de compra del carrito
 
+const DateTime=luxon.DateTime;
+const Duration=luxon.Duration;
+const dur = Duration.fromObject({ hours: 2, minutes: 15 });
+const Interval=luxon.Interval;
 $(".comprarModal").click(function () {
     $("#ventanaCarrito").modal('hide');
-    
-    
+    fechaIngreso=DateTime.local()    
     if (carritoDeCompra.length > 0) {
       // guardarCarritoEnLocalStorage();
       contenedorDeCarrito.innerHTML = "";
@@ -214,6 +217,27 @@ $(".comprarModal").click(function () {
   function actualizarCarrito() {
     contadorCarrito.innerText = "Unidades: " + carritoDeCompra.reduce((unid, item) => unid + item.cantidad, 0);
     importeTotalCarrito.innerText = "Importe Total: " + carritoDeCompra.reduce((total, item) => total + (item.precioVentaUnitario * item.cantidad), 0);
+    const dttiempoIngreso= DateTime.fromISO(fechaIngreso);
+    const tiempofinalDeLaCompra=dttiempoIngreso.plus(dur);
+    const now = DateTime.now();
+    const i = Interval.fromDateTimes(now, tiempofinalDeLaCompra)
+    const tiempoRestanteEnLaCompra=i.length(`hours`);
+    Toastify({
+      text: `Tiempo restante Para poder comprar ${parseInt(tiempoRestanteEnLaCompra)}:${parseInt(((i.length(`hours`))-parseInt(tiempoRestanteEnLaCompra))*60)} hs `,
+      duration: 2500,
+      className:"info",
+      newWindow: true,
+      close: true,
+      offset: {
+        x: 4, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+        y: 2 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+      },
+      avatar:"../img/cliente.png",
+      // gravity: "top", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+    }).showToast();
+
   }
   
   function guardarCarritoEnLocalStorage() {

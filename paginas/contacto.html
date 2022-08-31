@@ -12,23 +12,31 @@
     <link rel="shortcut icon" href="../img/bartender2.png">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
-<!-- Bootstrap Jquery JavaScripts  -->
-<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<!-- Bootstrap Jquery JavaScripts  -->
+    <!-- Bootstrap Jquery JavaScripts  -->
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap Jquery JavaScripts  -->
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-      
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.3.0/build/global/luxon.min.js"></script>
+
     <link rel="stylesheet" href="../css/style.css">
     <title>contacto | bartender</title>
 </head>
 
 <body class="body">
     <!-- Encabezado -->
-   
+
     <script async src="../js/contacto.js"></script>
     <header>
         <nav class="navbar navbar-expand-lg bg-light">
@@ -89,14 +97,15 @@
                     <label for="exampleFormControlInput1" class="form-label">Usuario</label>
                     <input type="text" class="form-control" id="idUsuario" placeholder="ingrese usuario">
                     <p class="mensajeIngreso">mensaje</p>
-                <!-- </div> -->
-                <!-- <div class="mb-1"> -->
+                    <!-- </div> -->
+                    <!-- <div class="mb-1"> -->
                     <label for="exampleFormControlInput2" class="form-label">clave</label>
                     <input type="text" class="form-control" id="idClaveUsuario" placeholder="ingrese clave">
                     <p class="mensajeIngreso">Mensaje</p>
-                <!-- </div> -->
-                <!-- <div class="mb-1"> -->
-                    <button type="button" onclick="verificarCliente()" class="btn btn-dark w-100 fs-4 mb-4 mt-3 botonEnvio" >Validar Usuario</button>
+                    <!-- </div> -->
+                    <!-- <div class="mb-1"> -->
+                    <button type="button" onclick="verificarCliente()"
+                        class="btn btn-dark w-100 fs-4 mb-4 mt-3 botonEnvio">Validar Usuario</button>
                 </div>
 
                 <div id="idDivNombreCliente" class="mb-1">
@@ -108,11 +117,11 @@
                     <input type="email" readonly class="form-control" id="idEmailCliente"
                         placeholder="name@example.com">
                 </div>
-                <div  id="idDivTextoCliente" class="mb-1">
+                <div id="idDivTextoCliente" class="mb-1">
                     <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
                     <textarea class="form-control" readonly id="idTextoCliente" rows="3"></textarea>
                 </div>
-                <div id="idOcultaDivAltaSuscribe" class="form-check mb-1" >
+                <div id="idOcultaDivAltaSuscribe" class="form-check mb-1">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" readonly for="flexCheckDefault">
                         Se subscribe para recibir nueva informacion
@@ -129,7 +138,7 @@
                         Hombre
                     </label>
                 </div>
-                <div id="idOcultaDivSexoMujer" class="form-check" >
+                <div id="idOcultaDivSexoMujer" class="form-check">
                     <input class="form-check-input" readonly type="radio" name="exampleRadios" id="exampleRadios2"
                         value="option2">
                     <label class="form-check-label" for="exampleRadios2">
@@ -166,7 +175,7 @@
                         width="1000" height="500" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div> -->
-    
+
             </div>
             <!-- <div class="col-12 col-md-6">
                 <iframe
