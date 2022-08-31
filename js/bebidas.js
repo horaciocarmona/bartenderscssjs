@@ -1,6 +1,6 @@
 // Declaracion de variables
 let carritoDeCompra = [];
-let productosParaCarrito = [];
+let productosParaCarrito = [] ;
 let listadoCarritosIngresados = [];
 const contenerdorDeProductos = document.getElementById('contenedorProductos');
 const contenedorDeCarrito = document.getElementById('contenedorCarrito');
@@ -9,7 +9,6 @@ const contadorCarrito = document.getElementById('contadorCarrito');
 const importeTotalCarrito = document.getElementById('importeTotalEnCarrito');
 const btnAgregarProducto = document.getElementById(`buttonCarrito`);
 const listadoDeClientesAuxiliar = JSON.parse(localStorage.getItem("listadoClientesIngresados"));
-
 // controla ingreso del cliente y habilita compra y carga de carrito anterior
 const clienteLogeado = JSON.parse(sessionStorage.getItem("clienteLogeado"));
 const p = document.createElement(`p`);
@@ -17,14 +16,27 @@ let puedeComprar;
 
 // Syntax ternario para si existe cliente logeado
 clienteLogeado ? puedeComprar = true : puedeComprar = false;
-
 // Syntax uso del operador ?
 if (puedeComprar) {
   p.innerHTML = `
    Nombre del cliente: ${clienteLogeado?.nombre || "La propiedad no existe"} 
   `
   contenedorTituloDeCarrito.appendChild(p);
-  verificarCarritoAnterior();
+  Toastify({
+    text: `Bienvenido  ${clienteLogeado?.nombre || "La propiedad no existe"}`,
+    duration: 2500,
+    className:"info",
+    newWindow: true,
+    close: true,
+    offset: {
+      x: 250, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+      y: 210 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+    },
+    avatar:"../img/cliente.png",
+    // gravity: "top", // `top` or `bottom`
+    position: "center", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+  }).showToast();
 }
 
 // fin de control cliente
@@ -34,10 +46,17 @@ btnAgregarProducto.addEventListener(`click`, () => $('#ventanaCarrito').modal('s
 
 // ********** carga en la pagina los productos y botones para comprar
 mostrarProducto();
+if (puedeComprar){
+  verificarCarritoAnterior();
+  verificarCarritoActual();
+}
+
 // ********** termina la ejecucion
 
 function mostrarProducto() {
-  productosParaCarrito = traerProductosDeLaBase();
+  if (productosParaCarrito.length == 0){
+      productosParaCarrito = traerProductosDeLaBase();
+  }
   productosParaCarrito.forEach(ele => {
     // Syntax Desestructuracion con alias
     const {id,img,descripcionProducto:descripcion,precioVentaUnitario:precio,stockProducto:stock}=ele;
@@ -54,9 +73,10 @@ function mostrarProducto() {
        `;
     contenerdorDeProductos.appendChild(div);
     let btnAgregarProducto = document.getElementById(`botonAgregar${id}`);
-    if (stock > 0 && puedeComprar) {
-      btnAgregarProducto.addEventListener(`click`, () => agregarProductoAlCarrito(id))
+    if ( stock > 0) {
+        btnAgregarProducto.addEventListener(`click`, () => agregarProductoAlCarrito(id))
     }
+ 
   });
 }
 

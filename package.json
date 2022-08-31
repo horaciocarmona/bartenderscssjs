@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "node-sass": "^7.0.1",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "sweetalert2": "^11.4.29"
   },
   "name": "mi-repositorioscss",
   "version": "1.0.0",
@@ -13,6 +14,5 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
   "description": ""
 }

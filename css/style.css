@@ -277,6 +277,14 @@ section .imagenCoctelFitzgerald {
 .body .containter {
   max-width: 99%; }
 
+.body .info {
+  color: white;
+  background-color: transparent; }
+  .body .info img {
+    background-color: transparent;
+    width: 34vw;
+    height: 30vh; }
+
 main {
   background-color: #455E87; }
   main .row {

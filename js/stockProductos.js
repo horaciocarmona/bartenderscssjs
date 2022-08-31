@@ -1,4 +1,5 @@
 let productos=[]
+
 class producto {
     constructor(id, descripcionProducto, precioVentaUnitario, stockProducto,img,cantidad) {
       this.id = id;
@@ -18,7 +19,7 @@ class producto {
 
   function traerProductosDeLaBase(){
     productos=[];
-    let producto1 = new producto(1,"Campari 750ml", 1800, 3,"../img/campari.png");
+    let producto1 = new producto(1,"Campari 750ml", 1800, 3,"../img/campari.png" );
     let producto2 = new producto(2, "Puerto de inidias clasico 700ml", 1800, 150,"../img/puertodeindiasclasic.png");
     let producto3 = new producto(3, "Gin Bombay Bramble 700", 3800, 150,"../img/bombaybramle.png");
     let producto4 = new producto(4, "Capel reservado clasico 700ml",4200, 300,"../img/capelreservadotransparente.png");
