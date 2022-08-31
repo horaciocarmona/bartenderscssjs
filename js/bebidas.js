@@ -53,7 +53,8 @@ if (puedeComprar) {
 // fin de control cliente
 
 // evento para mostrar el carrito
-btnAgregarProducto.addEventListener(`click`, () => $('#ventanaCarrito').modal('show'));
+btnAgregarProducto.addEventListener(`click`, () =>{ puedeComprar && actualizarCarrito();
+  $('#ventanaCarrito').modal('show')});
 
 // ********** carga en la pagina los productos y botones para comprar
 mostrarProducto();
