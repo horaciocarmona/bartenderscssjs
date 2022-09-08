@@ -63,8 +63,10 @@ let clientesListado = [];
 const mostrarProductos = () => {
   let mensaje = "Elige un producto";
   productos.forEach(produ => {
+    const {id,cantidad,descripcionProducto:descripcion,precioVentaUnitario:precio,stockProducto:stock}=produ;
+
     mensaje += `
-          opcion ${produ.id} : ${produ.descripcionProducto} - stock ${produ.stockProducto} $${produ.precioVentaUnitario}
+          opcion ${id} : ${descripcion} - stock ${stock} $${precio}
         `
   }
   )

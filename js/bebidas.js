@@ -3,9 +3,11 @@ let carritoDeCompra = [];
 let productosParaCarrito = [] ;
 let listadoCarritosIngresados = [];
 let fechaIngreso;
-
+let arrayPaises=[];
 const contenerdorDeProductos = document.getElementById('contenedorProductos');
 const contenedorDeCarrito = document.getElementById('contenedorCarrito');
+const contenedorDePais = document.getElementById('contenedorPais');
+
 const contenedorTituloDeCarrito = document.getElementById('tituloCarrito');
 const contadorCarrito = document.getElementById('contadorCarrito');
 const importeTotalCarrito = document.getElementById('importeTotalEnCarrito');
@@ -19,6 +21,7 @@ let puedeComprar;
 // fecha y hora actual
 // const fechaActualDeCompra=DateTime.now();
 // Syntax ternario para si existe cliente logeado
+  
 clienteLogeado ? puedeComprar = true : puedeComprar = false;
 // Syntax uso del operador ?
 if (puedeComprar) {
@@ -31,7 +34,6 @@ if (puedeComprar) {
   //establecemos 2hs 15 minutos para comprar
   const dur = Duration.fromObject({ hours: 2, minutes: 15 });
   const dt=DateTime.fromISO(fechaIngreso);
-
   const tiempoParaComprar=dt.plus(dur);
   Toastify({
     text: `Bienvenido  ${clienteLogeado?.nombre || "La propiedad no existe"}`,
@@ -56,40 +58,106 @@ if (puedeComprar) {
 btnAgregarProducto.addEventListener(`click`, () =>{ puedeComprar && actualizarCarrito();
   $('#ventanaCarrito').modal('show')});
 
+  
 // ********** carga en la pagina los productos y botones para comprar
-mostrarProducto();
 if (puedeComprar){
   verificarCarritoAnterior();
   verificarCarritoActual();
 }
 
+
+mostrarProducto();
+
 // ********** termina la ejecucion
 
 function mostrarProducto() {
-  if (productosParaCarrito.length == 0){
-      productosParaCarrito = traerProductosDeLaBase();
-  }
-  productosParaCarrito.forEach(ele => {
-    // Syntax Desestructuracion con alias
-    const {id,img,descripcionProducto:descripcion,precioVentaUnitario:precio,stockProducto:stock}=ele;
-    let div = document.createElement("div");
-    div.className = "col-12 col-md-3 col-sm-6 col-xl-3 producto";
-    div.innerHTML = ` 
-           <img src=${img} class="rounded mx-auto d-block imagenhover" alt="Campari">
-           <div class="card-body">
-               <h5 class="text-center">${descripcion}</h5>
-               <p class="text-center"> Precio: ${precio}$</p>
-               <p id="stock${id}" class="text-center"> Stock: ${stock}</p>
-               <a href="#" class="btn btn-primary btn-block mb-3" data-toggle="modal" data-target="#exampleModal" id="botonAgregar${ele.id}">Comprar</a>
-           </div>   
-       `;
-    contenerdorDeProductos.appendChild(div);
-    let btnAgregarProducto = document.getElementById(`botonAgregar${id}`);
-    if ( stock > 0) {
-        btnAgregarProducto.addEventListener(`click`, () => agregarProductoAlCarrito(id))
-    }
+  // Syntax &&
+  // carritoDeCompra.length == 0 && (
+  // Carga los productos en la pagina
+
  
-  });
-}
+  fetch(`../js/datamock.js`)
+  .then((respuesta)=>respuesta.json())
+  .then((datos)=>{
+    productosParaCarrito=datos;
+    productosParaCarrito.forEach(ele => {
+      // Syntax Desestructuracion con alias
+      const {id,img,descripcionProducto:descripcion,precioVentaUnitario:precio,stockProducto:stock}=ele;
+      let div = document.createElement("div");
+      div.className = "col-12 col-md-3 col-sm-6 col-xl-3 producto";
+      div.innerHTML = ` 
+             <img src=${img} class="rounded mx-auto d-block imagenhover" alt="Campari">
+             <div class="card-body">
+                 <h5 class="text-center">${descripcion}</h5>
+                 <p class="text-center"> Precio: ${precio}$</p>
+                 <p id="stock${id}" class="text-center"> Stock: ${stock}</p>
+                 <div class="d-flex justify-content-evenly mb-4">
+                    <a href="#" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal" id="botonAgregar${ele.id}">Comprar</a>
+                    <a href="#" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal" id="botonPais${ele.id}">pais</a>
+                 </div>
+              </div>   
+         `;
+      contenerdorDeProductos.appendChild(div);
+      let btnAgregarProducto = document.getElementById(`botonAgregar${id}`);
+      if ( stock > 0) {
+          btnAgregarProducto.addEventListener(`click`, () => agregarProductoAlCarrito(id))
+      }
+      let btnAgregarPais = document.getElementById(`botonPais${id}`);
+      btnAgregarPais.addEventListener(`click`, () =>{$('#ventanaPais').modal('show')
+      productoElegido = arrayPaises.find(pais => pais.cca2 === ele.pais);
+      contenedorDePais.innerText="";
+
+      if (productoElegido){
+
+        div = document.createElement(`div`);
+        div.setAttribute(`class`, "modal-body");
+        div.innerHTML = `
+          <h5 class="text-center">${productoElegido.region}</h5>
+          <p> Subregion:${productoElegido.subregion} </p>
+          <p> Nombre:${productoElegido.name.common} </p>
+
+         `
+         botonAgregarPais.innerHTML=`<img width="20" height="20" src="${productoElegido.flags.png}">` ;
+   
+
+         contenedorDePais.appendChild(div);
+      } 
+    } )
+   
+    });
+
+    fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data => {
+      console.info("datos",data);
+      arrayPaises=data;
+      cargarPais(data);
+      })
+    .catch(err => console.error(err))
+  
+  cargarPais=(data)=>{
+      // Busco para los productos su bandera
+
+      productosParaCarrito.forEach(ele => {
+        div = document.createElement(`div`);
+
+        productoElegido = data.find(pais => pais.cca2 === ele.pais);
+        if (productoElegido){
+           botonAgregarPais = document.getElementById(`botonPais${ele.id}`);
+           botonAgregarPais.innerHTML=`<img width="20" height="20" src="${productoElegido.flags.png}">` ;
+                    
+
+        }  
+      })  
+  }        
+  
+  })
+
+
+  
+  }
+
+  // )
+
 
 

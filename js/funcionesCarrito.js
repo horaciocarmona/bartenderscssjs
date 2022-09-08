@@ -72,6 +72,11 @@ $(".comprarModal").click(function () {
   
   });
   
+  $(".cerrarModal").click(function () {
+    $("#ventanaPais").modal('hide')
+  
+  });
+  
   function mostrarCarrito(productoAgregar) {
     // Syntax Desestructuracion con alias
     const {id,cantidad,descripcionProducto:descripcion,precioVentaUnitario:precio,stockProducto:stock}=productoAgregar;
@@ -188,8 +193,9 @@ $(".comprarModal").click(function () {
                 let productoEnCarrito = carritoDeCompra.find(produ => produ.id === id);
                 if (productoEnCarrito) {
           //Sugar Syntax
-                   productoEnCarrito.cantidad++;
+                    productoEnCarrito.cantidad++;
                     productoEnCarrito.stockProducto--;
+                    productoElegido.stockProducto--;
                     document.getElementById(`cant${productoEnCarrito.id}`).innerHTML = `<p id="cant${productoEnCarrito.id}" class="text-center">unidades: ${productoEnCarrito.cantidad} precio: ${productoEnCarrito.precioVentaUnitario}</p>`;
                    $('#ventanaCarrito').modal('show'); 
                 // actualizarCarrito();
@@ -211,7 +217,8 @@ $(".comprarModal").click(function () {
             }
         }  
         document.getElementById(`stock${productoElegido.id}`).innerHTML = `<p id="stock${productoElegido.id}" class="text-center"> Stock: ${productoElegido.stockProducto}</p>`;
-    }
+
+      }
   }
   
   function actualizarCarrito() {
