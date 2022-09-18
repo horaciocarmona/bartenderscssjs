@@ -12,6 +12,20 @@ let listadoClientesIngresados=[];
 let mensaje;
 const DateTime=luxon.DateTime;
 const fechaIngreso=DateTime.local();
+
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '7554062b56msh38e937366ce366dp1c5710jsn54b14098d12b',
+		'X-RapidAPI-Host': 'country-flags.p.rapidapi.com'
+	}
+};
+
+fetch('https://country-flags.p.rapidapi.com/png/us', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
+
 class cliente{
     constructor(obj)
     {

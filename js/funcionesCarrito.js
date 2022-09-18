@@ -67,6 +67,11 @@ $(".comprarModal").click(function () {
     $("#ventanaPais").modal('hide')
   });
   
+  $(".cerrarModal").click(function () {
+    $("#ventanaPais").modal('hide')
+  
+  });
+  
   function mostrarCarrito(productoAgregar) {
     const {id,cantidad,descripcionProducto:descripcion,precioVentaUnitario:precio,stockProducto:stock}=productoAgregar;
     contenedorDeCarrito.appendChild(productoAgregar.mostrarEnCarrito());

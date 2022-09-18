@@ -64,7 +64,6 @@ btnAgregarProducto.addEventListener(`click`, () =>{ puedeComprar && actualizarCa
 
   
 // ********** carga en la pagina los productos y botones para comprar
-
 if (puedeComprar){
   verificarCarritoAnterior();
   verificarCarritoActual();
