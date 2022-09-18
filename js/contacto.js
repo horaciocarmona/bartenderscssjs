@@ -18,15 +18,9 @@ class cliente{
         this.nombre=obj.nombre;
         this.usuario=obj.usuario;
         this.clave=obj.clave;
-        // this.edad=edad;
-        // this.sexo=sexo;
-        // this.domicilio=domicilio;
-        // this.pais=pais;
-        // this.tiempoIngreso=tiempoIngreso;
-        // this.tiempoSalida=tiempoSalida;
         this.email=obj.email;
         this.fechaIngreso=obj.fechaIngreso;
-
+       
     }    
     retornarNodoLi(){
         let nodo=document.createElement("li");
@@ -35,28 +29,22 @@ class cliente{
     }
 }
 
-function ingresaOtroCliente(){
-    document.querySelector(`#idDivNombreCliente`).style.display="none";
-    document.querySelector(`#idDivEmailCliente`).style.display="none";
-    document.querySelector(`#idDivTextoCliente`).style.display="none";
-    document.querySelector(`#idDivLogin`).style.display="block";
-    document.querySelector(`#idButtonCompra`).style.display="none";
-    document.getElementById(`idUsuario`).value="";
-    document.getElementById(`idClaveUsuario`).value="";
-
-    document.getElementById(`idNombreCliente`).value="";
-    document.getElementById(`idEmailCliente`).value="";
-    document.getElementById(`idTextoCliente`).value="";
-}
+// function ingresaOtroCliente(){
+//     document.querySelector(`#idDivNombreCliente`).style.display="none";
+//     document.querySelector(`#idDivEmailCliente`).style.display="none";
+//     document.querySelector(`#idDivTextoCliente`).style.display="none";
+//     document.querySelector(`#idDivLogin`).style.display="block";
+//     document.querySelector(`#idButtonCompra`).style.display="none";
+//     document.getElementById(`idUsuario`).value="";
+//     document.getElementById(`idClaveUsuario`).value="";
+//     document.getElementById(`idNombreCliente`).value="";
+//     document.getElementById(`idEmailCliente`).value="";
+//     document.getElementById(`idTextoCliente`).value="";
+// }
 
 // tomar datos de una base de datos
 function traerClientesDeLaBase(){
   let clientes=[];
-//   clientes.push(new cliente("juan","juan","1234",20,"masculino","maipu 63 bernal","Argentina",0,0,"juan@hotmail.com"));
-//   clientes.push(new cliente("pedro","pedro","1111",30,"masculino","san martin 348 quilmes","Argentina",0,0,"pedro@hotmail.com"));
-//   clientes.push(new cliente("jose","jose","6666",25,"femenino","cuchacucha 263 quito","Peru",0,0,"jose@hotmail.com"));
-//   clientes.push(new cliente("carlos","carlos","9999",50,"masculino","junin 323","Argentina",0,0,"carlos@hotmail.com"));
-
   clientes.push(new cliente({nombre:"juan",usuario:"juan",clave:"1234",email:"juan@hotmail.com"}));
   clientes.push(new cliente({nombre:"pedro",usuario:"pedro",clave:"1111",email:"pedro@hotmail.com"}));
   clientes.push(new cliente({nombre:"jose",usuario:"jose",clave:"6666",email:"jose@hotmail.com"}));
@@ -82,22 +70,11 @@ function verificarCliente(){
             document.querySelector(`#idDivNombreCliente`).style.display="block";
             document.querySelector(`#idDivEmailCliente`).style.display="block";
             document.querySelector(`#idDivTextoCliente`).style.display="block";
-            
             document.querySelector(`#idDivLogin`).style.display="none";
             document.getElementById(`idNombreCliente`).value=unCliente.nombre;
             document.getElementById(`idEmailCliente`).value=unCliente.email;
             document.getElementById(`idTextoCliente`).value=mensaje+", puede Comprar ";
-        //     if (!document.body.contains(document.getElementById(`idButtonCompra`))){
-        //         let padre=document.getElementById(`idCliente`);
-        //         let buttonCompra=document.createElement("div");
-        //         buttonCompra.className="mb-1 mt-1";
-        //         buttonCompra.innerHTML=`<button type="button" id="idButtonCompra" class="btn btn-dark w-100 fs-4 mb-4 mt-3 botonEnvio" onclick="ingresaOtroCliente()">Comprar</button>`;
-        //         padre.appendChild(buttonCompra);
-    
-        //     }
-        //    document.querySelector(`#idButtonCompra`).style.display="block";
-           
-           mostrarListado();
+            mostrarListado();
             // // // // container.innerHTML=`<button type="button" class="btn btn-dark w-100 fs-4 mb-4 mt-3 botonEnvio">Comprar</button>`;
         }else{
             mensaje="Clave erronea";
@@ -105,7 +82,6 @@ function verificarCliente(){
     }else{
         mensaje="El usuario no existe"    
     }
-
     let arrayParrafoNombre=document.getElementsByClassName(`mensajeIngreso`);
     for(elementoParrafo of arrayParrafoNombre){
         elementoParrafo.innerText=`mensaje: ${mensaje}`;
@@ -136,3 +112,5 @@ function verificarIngresosAnteriores(){
         mensaje="Bienvenido no tuvo ingresos anteriores"
     }
 }
+
+

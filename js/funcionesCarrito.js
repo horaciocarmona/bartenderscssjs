@@ -1,5 +1,4 @@
 // boton de compra del carrito
-
 const DateTime=luxon.DateTime;
 const Duration=luxon.Duration;
 const dur = Duration.fromObject({ hours: 2, minutes: 15 });
@@ -8,16 +7,13 @@ $(".comprarModal").click(function () {
     $("#ventanaCarrito").modal('hide');
     fechaIngreso=DateTime.local()    
     if (carritoDeCompra.length > 0) {
-      // guardarCarritoEnLocalStorage();
       contenedorDeCarrito.innerHTML = "";
       localStorage.setItem("listadoCarritosIngresados", JSON.stringify(carritoDeCompra));
       verificarCarritoAnterior();
       carritoDeCompra = [];
       guardarCarritoEnLocalStorage();
-  
     }
   });
-  
   // boton de cancelar carrito
   $(".cancelarModal").click(function () {
     $("#ventanaCarrito").modal('hide');
@@ -29,7 +25,6 @@ $(".comprarModal").click(function () {
       },
       buttonsStyling: false
       })
-    
       swalWithBootstrapButtons.fire({
         title: 'Esta seguro de borrar todos los productos del carrito?',
         text: "Puede borrarlo!",
@@ -42,11 +37,8 @@ $(".comprarModal").click(function () {
             if (result.isConfirmed) {
               subirStock();
               contenedorDeCarrito.innerHTML = ""; 
-              // verificarCarritoAnterior();
               carritoDeCompra = [];
-              // actualizarCarrito();
               guardarCarritoEnLocalStorage();
-    
               swalWithBootstrapButtons.fire(
              'Elimino los productos del carrito!',
              'Este carrito queda vacio.',
@@ -62,37 +54,25 @@ $(".comprarModal").click(function () {
                'error'
                 )
               }
-          })
+        })
     }
   })
   
-// cierra pantalla del carrito
+// cierra ventana del carrito
   $(".cerrarModal").click(function () {
     $("#ventanaCarrito").modal('hide')
-  
+  });
+// cierra ventana del Pais
+   $(".cerrarModal").click(function () {
+    $("#ventanaPais").modal('hide')
   });
   
   function mostrarCarrito(productoAgregar) {
-    // Syntax Desestructuracion con alias
     const {id,cantidad,descripcionProducto:descripcion,precioVentaUnitario:precio,stockProducto:stock}=productoAgregar;
-  
-    let div = document.createElement(`div`);
-    div.setAttribute(`class`, "modal-body");
-    div.innerHTML = `
-       <h5 class="text-center">${descripcion}</h5>
-       <p id="cant${id}" class="text-center">unidades: ${cantidad} precio: ${precio}</p>
-       <a href="#" class="btn btn-primary btn-block botonEliminar" id="botonEliminar${id}">Eliminar</a>
-  
-       `
-    contenedorDeCarrito.appendChild(div);
-    existeProducto = carritoDeCompra.find(item => item.id === id);
-    // Syntax &&
-    // producto  del carrito agrega boton eliminar
-    existeProducto && (existeProducto.StockProducto = existeProducto.StockProducto + carritoDeCompra.stockProducto + 1);
+    contenedorDeCarrito.appendChild(productoAgregar.mostrarEnCarrito());
+    // contenedorDeCarrito.appendChild(div);
     let boton = document.getElementById(`botonEliminar${id}`);
-    
     boton.addEventListener(`click`, () => {
-      
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           confirmButton: 'btn btn-success',
@@ -100,7 +80,6 @@ $(".comprarModal").click(function () {
         },
         buttonsStyling: false
       })
-      
       swalWithBootstrapButtons.fire({
         title: 'Esta seguro de eliminarlo del carrito?',
         text: "Puede eliminarlo!",
@@ -118,9 +97,7 @@ $(".comprarModal").click(function () {
           boton.parentElement.remove();
           carritoDeCompra = carritoDeCompra.filter((item => item.id !== id))
           document.getElementById(`stock${existeProducto.id}`).innerHTML = `<p id="stock${existeProducto.id}" class="text-center"> Stock: ${existeProducto.stockProducto}</p>`;
-          // actualizarCarrito();
           guardarCarritoEnLocalStorage();
-  
           swalWithBootstrapButtons.fire(
             'Lo Elimino!',
             'Este producto fue eliminado del carrito.',
@@ -138,79 +115,69 @@ $(".comprarModal").click(function () {
         }
       })
     })
-    $('#ventanaCarrito').modal('show');
+  //   $('#ventanaCarrito').modal('show');
   }
   
   function mostrarCarritoAnterior(producto) {
-    let div = document.createElement(`div`);
-    div.setAttribute(`class`, "modal-body carritoAnterior");
-    div.innerHTML = `
-    <h5 class="text-center">${producto.descripcionProducto}</h5>
-    <p class="text-center">unidades: ${producto.cantidad} precio: ${producto.precioVentaUnitario}</p>
-  
-    `
-    contenedorDeCarrito.appendChild(div);
+     contenedorDeCarrito.appendChild(producto.mostrarEnCarrito());
   }
   
   function agregarProductoAlCarrito(id) {
     if (!puedeComprar){
       Toastify({
-        text: `Para poder comprar debe logearse por la pagina Contacto"}`,
-        duration: 2500,
+        text: `Debe registrarse por Contacto`,
+        duration: 2400,
         className:"info",
         newWindow: true,
         close: true,
+        style: {
+            width: "28vw" ,
+            height: "30vh",
+            backgroundImage: `url("../img/cliente2.jpg")`,
+            backgroundColor: "transparent"},    
+    
         offset: {
-          x: 4, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-          y: 2 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+          x: "5em", // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+          y: "15em" // vertical axis - can be a number or a string indicating unity. eg: '2em'
         },
-        avatar:"../img/cliente.png",
+        // avatar:"../img/cliente.png",
         // gravity: "top", // `top` or `bottom`
-        position: "center", // `left`, `center` or `right`
+        position: "right", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
       }).showToast();
-    
-
     } else {   
-        let productoElegido = productosParaCarrito.find(producto => producto.id === id);
+        productoElegido = productosParaCarrito.find(producto => producto.id === id);
         if (productoElegido.stockProducto > 0) {
            if (carritoDeCompra.length === 0) {
-        //Sugar Syntax
+              //Sugar Syntax
                productoElegido.stockProducto--;
                productoElegido.cantidad = 1;
-        // productoElegido.cliente = clienteLogeado;
-               carritoDeCompra.push(productoElegido);
-               mostrarCarrito(productoElegido);
-        // actualizarCarrito();
-               guardarCarritoEnLocalStorage();
-    
-            } else {
+              //  nuevoProducto = new producto(productoElegido.id, productoElegido.descripcionProducto, productoElegido.precioVentaUnitario, productoElegido.stockProducto, productoElegido.img, productoElegido.cantidad);
+               nuevoProducto = new producto({id:productoElegido.id, descripcionProducto:productoElegido.descripcionProducto, precioVentaUnitario:productoElegido.precioVentaUnitario, stockProducto:productoElegido.stockProducto, img:productoElegido.img, cantidad:productoElegido.cantidad});
+               carritoDeCompra.push(nuevoProducto);
+               mostrarCarrito(nuevoProducto);
+              } else {
                 let productoEnCarrito = carritoDeCompra.find(produ => produ.id === id);
                 if (productoEnCarrito) {
-          //Sugar Syntax
-                   productoEnCarrito.cantidad++;
+                    //Sugar Syntax
+                    productoEnCarrito.cantidad++;
                     productoEnCarrito.stockProducto--;
+                    productoElegido.stockProducto--;
                     document.getElementById(`cant${productoEnCarrito.id}`).innerHTML = `<p id="cant${productoEnCarrito.id}" class="text-center">unidades: ${productoEnCarrito.cantidad} precio: ${productoEnCarrito.precioVentaUnitario}</p>`;
-                   $('#ventanaCarrito').modal('show'); 
-                // actualizarCarrito();
-                    guardarCarritoEnLocalStorage();
-  
-          //   if (productoEnCarrito.stockProducto === 0) {
-          //     // productos = productosParaCarrito.filter(produ => produ.id !== id);
-          //   }
                 } else {
-                     productoElegido.cantidad = 1;
+                      productoElegido.cantidad = 1;
                       productoElegido.stockProducto--;
-          // productoElegido.cliente = clienteLogeado;
-                      carritoDeCompra.push(productoElegido);
-                      mostrarCarrito(productoElegido);
-          // actualizarCarrito();
-                      guardarCarritoEnLocalStorage();
-    
+                      nuevoProducto = new producto({id:productoElegido.id, descripcionProducto:productoElegido.descripcionProducto, precioVentaUnitario:productoElegido.precioVentaUnitario, stockProducto:productoElegido.stockProducto, img:productoElegido.img, cantidad:productoElegido.cantidad});
+                      carritoDeCompra.push(nuevoProducto);
+                      mostrarCarrito(nuevoProducto);
                 }
             }
+            $('#ventanaCarrito').modal('show'); 
+            guardarCarritoEnLocalStorage();
+
         }  
         document.getElementById(`stock${productoElegido.id}`).innerHTML = `<p id="stock${productoElegido.id}" class="text-center"> Stock: ${productoElegido.stockProducto}</p>`;
+
     }
   }
   
@@ -223,18 +190,23 @@ $(".comprarModal").click(function () {
     const i = Interval.fromDateTimes(now, tiempofinalDeLaCompra)
     const tiempoRestanteEnLaCompra=i.length(`hours`);
     Toastify({
-      text: `Tiempo restante Para poder comprar ${parseInt(tiempoRestanteEnLaCompra)}:${parseInt(((i.length(`hours`))-parseInt(tiempoRestanteEnLaCompra))*60)} hs `,
+      text: `Tiempo restante Para comprar ${parseInt(tiempoRestanteEnLaCompra)}:${parseInt(((i.length(`hours`))-parseInt(tiempoRestanteEnLaCompra))*60)} hs `,
       duration: 2500,
       className:"info",
       newWindow: true,
       close: true,
+      style: {
+        width: "14vw" ,
+        height: "37vh",
+        backgroundImage: `url("../img/relojarena5.png")`,
+        backgroundColor: "transparent"},    
+
       offset: {
-        x: 4, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-        y: 2 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+        x: "3em", // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+        y: "3em" // vertical axis - can be a number or a string indicating unity. eg: '2em'
       },
-      avatar:"../img/cliente.png",
       // gravity: "top", // `top` or `bottom`
-      position: "center", // `left`, `center` or `right`
+      position: "right", // `left`, `center` or `right`
       stopOnFocus: true, // Prevents dismissing of toast on hover
     }).showToast();
 
@@ -251,9 +223,8 @@ $(".comprarModal").click(function () {
     listadoCarritosIngresados = [];
     if (listadoDeCarritoAuxiliar.length > 0) {
       for (elemento of listadoDeCarritoAuxiliar) {
-        // if (elemento.cliente.nombre == clienteLogeado.nombre) {
-          listadoCarritosIngresados.push(new producto(elemento.id, elemento.descripcionProducto, elemento.precioVentaUnitario, elemento.stockProducto, elemento.img, elemento.cantidad));
-        // }
+        nuevoProducto = new producto({id:elemento.id, descripcionProducto:elemento.descripcionProducto, precioVentaUnitario:elemento.precioVentaUnitario, stockProducto:elemento.stockProducto, img:elemento.img, cantidad:elemento.cantidad});
+        listadoCarritosIngresados.push(nuevoProducto);
       }
     }
     if (listadoCarritosIngresados.length > 0) {
@@ -263,10 +234,10 @@ $(".comprarModal").click(function () {
     
       `
       contenedorDeCarrito.appendChild(div);
-  
       for (element of listadoCarritosIngresados) {
         mostrarCarritoAnterior(element);
       }
+
       div = document.createElement(`div`);
       div.innerHTML = `
       <h5 class="text-center tituloCarritoH5">Carrito de compra actual</h5>
@@ -283,15 +254,18 @@ $(".comprarModal").click(function () {
     carritoDeCompra=[];
     if (listadoDeCarritoActual.length > 0) {
       for (elemento of listadoDeCarritoActual) {
-        // if (elemento.cliente.nombre == clienteLogeado.nombre) {
-          carritoDeCompra.push(new producto(elemento.id, elemento.descripcionProducto, elemento.precioVentaUnitario, elemento.stockProducto, elemento.img, elemento.cantidad));
-        // }
+        nuevoProducto = new producto({id:elemento.id, descripcionProducto:elemento.descripcionProducto, precioVentaUnitario:elemento.precioVentaUnitario, stockProducto:elemento.stockProducto, img:elemento.img,cantidad:elemento.cantidad});
+        carritoDeCompra.push(nuevoProducto);
       }
-
       if (carritoDeCompra.length > 0) {
         for (element of carritoDeCompra) {
+          existeProducto = productosParaCarrito.find(item => item.id === element.id);
+          // Syntax &&
+          // producto  del carrito agrega boton eliminar
+          existeProducto && (existeProducto.stockProducto = existeProducto.stockProducto - carritoDeCompra.cantidad);
           mostrarCarrito(element);
         }
+        $('#ventanaCarrito').modal('show'); 
         actualizarCarrito();
       }
   
@@ -303,7 +277,8 @@ $(".comprarModal").click(function () {
       // productoElegido = productosParaCarrito.find(producto => producto.id === elemento.id);
       productoElegido = productosParaCarrito.find(producto => producto.id === elemento.id);
       if (productoElegido){
-          productoElegido.stockProducto+=elemento.cantidad;
+          productoElegido.subeStock(elemento.cantidad);
+        // productoElegido.stockProducto+=elemento.cantidad;
           document.getElementById(`stock${productoElegido.id}`).innerHTML = `<p id="stock${productoElegido.id}" class="text-center"> Stock: ${productoElegido.stockProducto}</p>`;
       }
     })
