@@ -69,9 +69,9 @@ function mostrarProducto() {
     fetch('https://restcountries.com/v3.1/all')
     .then(response => response.json())
     .then(data => {
-        console.info("datos",data);
-        arrayPaises=data;
-        cargarPais(data);
+      console.info("datos",data);
+      arrayPaises=data;
+      cargarPais(data);
     })
     .catch(err => console.error(err))
   // Carga los productos en la pagina
@@ -115,11 +115,12 @@ function mostrarProducto() {
             div = document.createElement(`div`);
             div.setAttribute(`class`, "modal-body");
             div.innerHTML = `
-            <h5 class="text-center">${paisElegido.region}</h5>
-            <p> Subregion:${paisElegido.subregion} </p>
-            <p> Nombre:${paisElegido.name.common} </p>
+            <h5 class="text-center">${paisElegido.name.common}</h5>
+            <p class="text-center"> Capital: ${paisElegido.capital[0]} </p>
+            <p class="text-center"> Continente: ${paisElegido.continents} </p>
           `
-           btnAgregarPais.innerHTML=`<img width="20" height="20" src="${paisElegido.flags.png}">` ;
+
+          btnAgregarPais.innerHTML=`<img width="20" height="20" src="${paisElegido.flags.png}">` ;
            contenedorDePais.appendChild(div);
           } 
           $('#ventanaPais').modal('show');
@@ -130,7 +131,8 @@ function mostrarProducto() {
 
     cargarPais=(data)=>{
       // Busco para los productos su bandera
-        productosParaCarrito.forEach(ele => {
+
+      productosParaCarrito.forEach(ele => {
         div = document.createElement(`div`);
         paisElegido = data.find(pais => pais.cca2 === ele.pais);
         if (paisElegido){

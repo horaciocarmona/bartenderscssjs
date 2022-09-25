@@ -36,7 +36,7 @@ $(".comprarModal").click(function () {
         reverseButtons: true
       }).then((result) => {
             if (result.isConfirmed) {
-              subirStock();
+              subirTotalStock();
               contenedorDeCarrito.innerHTML = ""; 
               carritoDeCompra = [];
               guardarCarritoEnLocalStorage();
@@ -273,9 +273,7 @@ $(".comprarModal").click(function () {
     if (listadoDeCarritoActual.length > 0) {
       for (elemento of listadoDeCarritoActual) {
         nuevoProducto = new producto({id:elemento.id, descripcionProducto:elemento.descripcionProducto, precioVentaUnitario:elemento.precioVentaUnitario, stockProducto:elemento.stockProducto, img:elemento.img,cantidad:elemento.cantidad});
-        if (producto.cantidad > 0){
-          carritoDeCompra.push(nuevoProducto);
-        }
+        carritoDeCompra.push(nuevoProducto);
       }
       if (carritoDeCompra.length > 0) {
         for (element of carritoDeCompra) {
@@ -292,13 +290,13 @@ $(".comprarModal").click(function () {
     }
   }
 
-  const subirStock=()=>{
+  const subirTotalStock=()=>{
     carritoDeCompra.forEach(elemento=> {
       // productoElegido = productosParaCarrito.find(producto => producto.id === elemento.id);
       productoElegido = productosParaCarrito.find(producto => producto.id === elemento.id);
       if (productoElegido){
-          productoElegido.actuStock(elemento.cantidad);
-        // productoElegido.stockProducto+=elemento.cantidad;
+          // productoElegido.actuStock(elemento.cantidad);
+          productoElegido.stockProducto+=elemento.cantidad;
           document.getElementById(`stock${productoElegido.id}`).innerHTML = `<p id="stock${productoElegido.id}" class="text-center"> Stock: ${productoElegido.stockProducto}</p>`;
       }
     })
@@ -309,9 +307,12 @@ $(".comprarModal").click(function () {
     let productoEnCarrito = carritoDeCompra.find(produ => produ.id === id);
     if (productoEnCarrito) {
       if(e.target.classList.contains('btn-info')){
-         productoEnCarrito.cantidad++;
-         productoEnCarrito.stockProducto--;
-        //  productoEnCarrito.actuStock(-1);
+        if(productoEnCarrito.stockProducto > 0){
+           productoEnCarrito.cantidad++;
+           productoEnCarrito.stockProducto--;
+          // productoEnCarrito.actuStock(-1);
+
+        }
       }
       if(e.target.classList.contains('btn-danger')){
         if(productoEnCarrito.cantidad > 0){

@@ -31,10 +31,6 @@ class producto {
          `
          return div;
     }
-    actuStock(unidades) {
-      this.stockProducto+=unidades;
-    }
-
   }
 
    
