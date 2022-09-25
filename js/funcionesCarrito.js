@@ -3,6 +3,7 @@ const DateTime=luxon.DateTime;
 const Duration=luxon.Duration;
 const dur = Duration.fromObject({ hours: 2, minutes: 15 });
 const Interval=luxon.Interval;
+
 $(".comprarModal").click(function () {
     $("#ventanaCarrito").modal('hide');
     fechaIngreso=DateTime.local()    
@@ -69,14 +70,19 @@ $(".comprarModal").click(function () {
   
   $(".cerrarModal").click(function () {
     $("#ventanaPais").modal('hide')
-  
   });
   
   function mostrarCarrito(productoAgregar) {
     const {id,cantidad,descripcionProducto:descripcion,precioVentaUnitario:precio,stockProducto:stock}=productoAgregar;
     contenedorDeCarrito.appendChild(productoAgregar.mostrarEnCarrito());
     // contenedorDeCarrito.appendChild(div);
-    let boton = document.getElementById(`botonEliminar${id}`);
+    let  botonUnid = document.getElementById(`cant${id}`);
+    // boton +- unidades
+    botonUnid.addEventListener(`click`, (e) => {
+      btnAccion(e,id);
+    })
+    // boton eliminar
+    boton = document.getElementById(`botonEliminar${id}`);
     boton.addEventListener(`click`, () => {
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -98,10 +104,11 @@ $(".comprarModal").click(function () {
           existeProducto = carritoDeCompra.find(item => item.id === id);
           //Sugar Syntax
           // Syntax &&
-          existeProducto && (existeProducto.stockProducto += cantidad);
-          boton.parentElement.remove();
-          carritoDeCompra = carritoDeCompra.filter((item => item.id !== id))
+          existeProducto && (existeProducto.stockProducto += existeProducto.cantidad);
+          existeProducto && (existeProducto.cantidad = 0);
           document.getElementById(`stock${existeProducto.id}`).innerHTML = `<p id="stock${existeProducto.id}" class="text-center"> Stock: ${existeProducto.stockProducto}</p>`;
+          boton.parentElement.remove();
+          // carritoDeCompra = carritoDeCompra.filter((item => item.id !== id));
           guardarCarritoEnLocalStorage();
           swalWithBootstrapButtons.fire(
             'Lo Elimino!',
@@ -109,7 +116,6 @@ $(".comprarModal").click(function () {
             'success'
           )
         } else if (
-          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
@@ -120,7 +126,6 @@ $(".comprarModal").click(function () {
         }
       })
     })
-  //   $('#ventanaCarrito').modal('show');
   }
   
   function mostrarCarritoAnterior(producto) {
@@ -140,13 +145,10 @@ $(".comprarModal").click(function () {
             height: "30vh",
             backgroundImage: `url("../img/cliente2.jpg")`,
             backgroundColor: "transparent"},    
-    
         offset: {
           x: "5em", // horizontal axis - can be a number or a string indicating unity. eg: '2em'
           y: "15em" // vertical axis - can be a number or a string indicating unity. eg: '2em'
         },
-        // avatar:"../img/cliente.png",
-        // gravity: "top", // `top` or `bottom`
         position: "right", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
       }).showToast();
@@ -161,17 +163,28 @@ $(".comprarModal").click(function () {
                nuevoProducto = new producto({id:productoElegido.id, descripcionProducto:productoElegido.descripcionProducto, precioVentaUnitario:productoElegido.precioVentaUnitario, stockProducto:productoElegido.stockProducto, img:productoElegido.img, cantidad:productoElegido.cantidad});
                carritoDeCompra.push(nuevoProducto);
                mostrarCarrito(nuevoProducto);
-              } else {
+            } else {
                 let productoEnCarrito = carritoDeCompra.find(produ => produ.id === id);
                 if (productoEnCarrito) {
                     //Sugar Syntax
                     productoEnCarrito.cantidad++;
                     productoEnCarrito.stockProducto--;
                     productoElegido.stockProducto--;
-                    document.getElementById(`cant${productoEnCarrito.id}`).innerHTML = `<p id="cant${productoEnCarrito.id}" class="text-center">unidades: ${productoEnCarrito.cantidad} precio: ${productoEnCarrito.precioVentaUnitario}</p>`;
+                    // productoElegido.actuStock(productoElegido.cantidad * -1);
+                    document.getElementById(`cant${productoEnCarrito.id}`).innerHTML = `<p id="cant${productoEnCarrito.id}" class="text-center">
+                    unidades:
+                    <button class="btn btn-info btn-sm">
+                    +
+                    </button>
+                    ${productoEnCarrito.cantidad} 
+                    <button class="btn btn-danger btn-sm">
+                    -
+                    </button>
+                    precio: ${productoEnCarrito.precioVentaUnitario}</p>`;
                 } else {
                       productoElegido.cantidad = 1;
                       productoElegido.stockProducto--;
+                      // productoElegido.actuStock(productoElegido.cantidad * -1);
                       nuevoProducto = new producto({id:productoElegido.id, descripcionProducto:productoElegido.descripcionProducto, precioVentaUnitario:productoElegido.precioVentaUnitario, stockProducto:productoElegido.stockProducto, img:productoElegido.img, cantidad:productoElegido.cantidad});
                       carritoDeCompra.push(nuevoProducto);
                       mostrarCarrito(nuevoProducto);
@@ -179,14 +192,19 @@ $(".comprarModal").click(function () {
             }
             $('#ventanaCarrito').modal('show'); 
             guardarCarritoEnLocalStorage();
-
         }  
         document.getElementById(`stock${productoElegido.id}`).innerHTML = `<p id="stock${productoElegido.id}" class="text-center"> Stock: ${productoElegido.stockProducto}</p>`;
-
     }
   }
   
   function actualizarCarrito() {
+    carritoDeCompra.forEach(elemento=> {
+      if (elemento.cantidad==0) {
+          boton = document.getElementById(`botonEliminar${elemento.id}`);
+          boton.parentElement.remove();
+      }
+    })
+    carritoDeCompra = carritoDeCompra.filter((item => item.cantidad !== 0));
     contadorCarrito.innerText = "Unidades: " + carritoDeCompra.reduce((unid, item) => unid + item.cantidad, 0);
     importeTotalCarrito.innerText = "Importe Total: " + carritoDeCompra.reduce((total, item) => total + (item.precioVentaUnitario * item.cantidad), 0);
     const dttiempoIngreso= DateTime.fromISO(fechaIngreso);
@@ -201,20 +219,17 @@ $(".comprarModal").click(function () {
       newWindow: true,
       close: true,
       style: {
-        width: "14vw" ,
-        height: "37vh",
+        width: "12vw" ,
+        height: "35vh",
         backgroundImage: `url("../img/relojarena5.png")`,
         backgroundColor: "transparent"},    
-
       offset: {
         x: "3em", // horizontal axis - can be a number or a string indicating unity. eg: '2em'
         y: "3em" // vertical axis - can be a number or a string indicating unity. eg: '2em'
       },
-      // gravity: "top", // `top` or `bottom`
       position: "right", // `left`, `center` or `right`
       stopOnFocus: true, // Prevents dismissing of toast on hover
     }).showToast();
-
   }
   
   function guardarCarritoEnLocalStorage() {
@@ -235,18 +250,16 @@ $(".comprarModal").click(function () {
     if (listadoCarritosIngresados.length > 0) {
       let div = document.createElement(`div`);
       div.innerHTML = `
-      <h5 class="text-center tituloCarritoH5">Ultimo carrito de compra</h5>
+      <h5 class="text-center tituloCarritoH5">Ultimo carrito comprado</h5>
     
       `
       contenedorDeCarrito.appendChild(div);
       for (element of listadoCarritosIngresados) {
         mostrarCarritoAnterior(element);
       }
-
       div = document.createElement(`div`);
       div.innerHTML = `
       <h5 class="text-center tituloCarritoH5">Carrito de compra actual</h5>
-    
       `
       contenedorDeCarrito.appendChild(div);
     }
@@ -260,7 +273,9 @@ $(".comprarModal").click(function () {
     if (listadoDeCarritoActual.length > 0) {
       for (elemento of listadoDeCarritoActual) {
         nuevoProducto = new producto({id:elemento.id, descripcionProducto:elemento.descripcionProducto, precioVentaUnitario:elemento.precioVentaUnitario, stockProducto:elemento.stockProducto, img:elemento.img,cantidad:elemento.cantidad});
-        carritoDeCompra.push(nuevoProducto);
+        if (producto.cantidad > 0){
+          carritoDeCompra.push(nuevoProducto);
+        }
       }
       if (carritoDeCompra.length > 0) {
         for (element of carritoDeCompra) {
@@ -282,9 +297,48 @@ $(".comprarModal").click(function () {
       // productoElegido = productosParaCarrito.find(producto => producto.id === elemento.id);
       productoElegido = productosParaCarrito.find(producto => producto.id === elemento.id);
       if (productoElegido){
-          productoElegido.subeStock(elemento.cantidad);
+          productoElegido.actuStock(elemento.cantidad);
         // productoElegido.stockProducto+=elemento.cantidad;
           document.getElementById(`stock${productoElegido.id}`).innerHTML = `<p id="stock${productoElegido.id}" class="text-center"> Stock: ${productoElegido.stockProducto}</p>`;
       }
     })
+  }
+
+  
+  const btnAccion = (e,id )=>{
+    let productoEnCarrito = carritoDeCompra.find(produ => produ.id === id);
+    if (productoEnCarrito) {
+      if(e.target.classList.contains('btn-info')){
+         productoEnCarrito.cantidad++;
+         productoEnCarrito.stockProducto--;
+        //  productoEnCarrito.actuStock(-1);
+      }
+      if(e.target.classList.contains('btn-danger')){
+        if(productoEnCarrito.cantidad > 0){
+           productoEnCarrito.cantidad--;
+           productoEnCarrito.stockProducto++;
+          //  productoEnCarrito.actuStock(1);
+        }  
+        if(productoEnCarrito.cantidad ===0){
+          // carritoDeCompra = carritoDeCompra.filter((item => item.id !== id));
+          //  boton = document.getElementById(`botonEliminar${id}`);
+          //  boton.parentElement.remove();
+
+        }
+      }
+      // document.getElementById(`stock${productoEnCarrito.id}`).innerHTML = `<p id="stock${productoEnCarrito.id}" class="text-center"> Stock: ${productoEnCarrito.stockProducto}</p>`;
+      document.getElementById(`cant${productoEnCarrito.id}`).innerHTML = `<p id="cant${productoEnCarrito.id}" class="text-center">
+      unidades:
+      <button class="btn btn-info btn-sm">
+      +
+      </button>
+      ${productoEnCarrito.cantidad} 
+      <button class="btn btn-danger btn-sm">
+      -
+      </button>
+      precio: ${productoEnCarrito.precioVentaUnitario}</p>`;
+      document.getElementById(`stock${productoEnCarrito.id}`).innerHTML = `<p id="stock${productoEnCarrito.id}" class="text-center"> Stock: ${productoEnCarrito.stockProducto}</p>`;
+      guardarCarritoEnLocalStorage() 
+      // e.stopPropagation()
+    }
   }

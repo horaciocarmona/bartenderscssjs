@@ -17,15 +17,10 @@ const listadoDeClientesAuxiliar = JSON.parse(localStorage.getItem("listadoClient
 // controla ingreso del cliente y habilita compra y carga de carrito anterior
 const clienteLogeado = JSON.parse(sessionStorage.getItem("clienteLogeado"));
 const p = document.createElement(`p`);
-
-// fecha y hora actual
-// const fechaActualDeCompra=DateTime.now();
 // Syntax ternario para si existe cliente logeado
-  
 clienteLogeado ? puedeComprar = true : puedeComprar = false;
 // Syntax uso del operador ?
 if (puedeComprar) {
-
   p.innerHTML = `
    Nombre del cliente: ${clienteLogeado?.nombre || "La propiedad no existe"} 
   `
@@ -50,7 +45,6 @@ if (puedeComprar) {
       x: "0em", // horizontal axis - can be a number or a string indicating unity. eg: '2em'
       y: "5em" // vertical axis - can be a number or a string indicating unity. eg: '2em'
     },
-    // gravity: "top", // `top` or `bottom`
     position: "right", // `left`, `center` or `right`
     stopOnFocus: true, // Prevents dismissing of toast on hover
   }).showToast();
@@ -68,16 +62,10 @@ if (puedeComprar){
   verificarCarritoAnterior();
   verificarCarritoActual();
 }
-
-
 mostrarProducto();
-
 // ********** termina la ejecucion
 
 function mostrarProducto() {
-  // Syntax &&
-  // carritoDeCompra.length == 0 && (
-
     fetch('https://restcountries.com/v3.1/all')
     .then(response => response.json())
     .then(data => {
@@ -86,10 +74,7 @@ function mostrarProducto() {
         cargarPais(data);
     })
     .catch(err => console.error(err))
-
   // Carga los productos en la pagina
-
-  
   fetch(`../js/datamock.json`)
   .then((respuesta)=>respuesta.json())
   .then((datos)=>{
@@ -99,11 +84,11 @@ function mostrarProducto() {
       productosParaCarrito.push(nuevoProducto);
     })
     productosParaCarrito.forEach(ele => {
-      // Syntax Desestructuracion con alias
       if (carritoDeCompra.length > 0) {
         existeProducto=carritoDeCompra.find( item => item.id===ele.id);
         (existeProducto) && (ele.stockProducto -= existeProducto.cantidad);          
       }
+      // Syntax Desestructuracion con alias
       const {id,img,descripcionProducto:descripcion,precioVentaUnitario:precio,stockProducto:stock}=ele;
       let div = document.createElement("div");
       div.className = "col-12 col-md-3 col-sm-6 col-xl-3 producto";
@@ -122,9 +107,6 @@ function mostrarProducto() {
       contenerdorDeProductos.appendChild(div);
       let btnAgregarProducto = document.getElementById(`botonAgregar${id}`);
       stock > 0 && (btnAgregarProducto.addEventListener(`click`, () => agregarProductoAlCarrito(id)));
-      // if ( stock > 0) {
-      //     btnAgregarProducto.addEventListener(`click`, () => agregarProductoAlCarrito(id))
-      // }
       let btnAgregarPais = document.getElementById(`botonPais${id}`);
       btnAgregarPais.addEventListener(`click`, () =>{
          let paisElegido = arrayPaises.find(pais => pais.cca2 === ele.pais); 
@@ -136,7 +118,6 @@ function mostrarProducto() {
             <h5 class="text-center">${paisElegido.region}</h5>
             <p> Subregion:${paisElegido.subregion} </p>
             <p> Nombre:${paisElegido.name.common} </p>
-
           `
            btnAgregarPais.innerHTML=`<img width="20" height="20" src="${paisElegido.flags.png}">` ;
            contenedorDePais.appendChild(div);
